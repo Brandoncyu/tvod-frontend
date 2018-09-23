@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-// import Register from './components/signin/Register'
-// import Login from './components/signin/Login'
-import Signin from './components/signin/Signin'
+import AuthenticateRoute from './helpers/AuthenticatedRoutes'
+import Register from './components/signin/Register'
+import Login from './components/signin/Login'
+import auth from './models/auth'
+import UserProfile from './components/UserProfile'
+import ShowSelect from './components/ShowSelect'
+import Follow from './components/Follow'
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
@@ -11,14 +14,35 @@ class App extends Component {
     super()
   }
 
+  componentDidMount = async() => {
+    const response = await auth.verify()
+    if (response){
+      this.setState({
+        isLoggedIn: true
+      })
+      this.props.history.push(`/`)
+    }
+  }
+
   render() {
     return (
       <Switch>
-
-        <Route exact path="/signin" render={()=>{
-          return <Signin />
+        <Route exact path="/" render={()=>{
+          return <UserProfile />
         }} />
-        <Redirect to="/signin" />
+        <Route exact path="/shows" render={()=>{
+          return <ShowSelect />
+        }} />
+        <Route exact path="/following" render={()=>{
+          return <Follow />
+        }} />
+        <Route exact path="/register" render={()=>{
+          return <Register />
+        }} />
+        <Route exact path="/login" render={()=>{
+          return <Login />
+        }} />
+        <Redirect to="/login" />
       </Switch>
     );
   }
