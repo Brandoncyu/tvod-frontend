@@ -6,9 +6,12 @@ import {
   Form,
   FormGroup,
   Input,
+  InputGroup,
+  InputGroupAddon,
   Button
 } from 'reactstrap'
 import { connect } from 'react-redux'
+import { searchAll, searchOne, searchOneWithEpisodes } from '../../models/showSelect'
 
 class SearchBar extends Component {
   constructor(props){
@@ -19,23 +22,16 @@ class SearchBar extends Component {
     }
   }
 
+  searchShows = (event) =>{
+    this.props.searchShows(this.state.search.replace(/ /g, '+'))
+  }
 
   render(){
     return (
-      <Container>
-        <Row>
-          <Col md="9">
-            <Form>
-              <FormGroup>
-                <Input type="search" name="search" id="search" placeholder="Type in what you've been watching here!" value={this.state.search}/>
-              </FormGroup>
-            </Form>
-          </Col>
-          <Col>
-            <h4>Your Shows</h4>
-          </Col>
-        </Row>
-      </Container>
+      <InputGroup size="lg">
+        <Input type="search" name="search" id="search" placeholder="Search for what you've been watching here!" onChange={e=>this.setState({search: e.target.value})} />
+        <InputGroupAddon onClick={this.searchShows} addonType="append"><Button color="secondary">Search</Button></InputGroupAddon>
+      </InputGroup>
     )
   }
 }
