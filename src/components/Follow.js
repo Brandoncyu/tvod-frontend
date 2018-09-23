@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import Title from './follow/01Title'
 
 class Follow extends Component {
   constructor(props){
@@ -10,6 +11,7 @@ class Follow extends Component {
     return (
       <div>
         <Header />
+        <Title />
       </div>
     )
   }

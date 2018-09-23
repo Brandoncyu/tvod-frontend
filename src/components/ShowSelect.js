@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import Title from './showselect/01Title'
+import SearchBar from './showselect/02SearchBar'
 
 class ShowSelect extends Component {
   constructor(props){
@@ -10,6 +12,8 @@ class ShowSelect extends Component {
     return (
       <div>
         <Header />
+        <Title />
+        <SearchBar />
       </div>
     )
   }
