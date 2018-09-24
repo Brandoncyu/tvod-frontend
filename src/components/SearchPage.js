@@ -3,6 +3,7 @@ import {
   Container, Row, Col, Form, FormGroup
 } from 'reactstrap'
 import Header from './Header'
+import Season from './searchpages/01Season'
 import { searchOneWithEpisodes } from '../models/showSelect'
 const moment = require('moment')
 
@@ -31,13 +32,13 @@ class searchPage extends Component {
     })
   }
 
-  renderSeasons = (seasons) => {
-    let result = ''
-    for (var seasonNumber in seasons){
-      result += `<FormGroup>${seasonNumber}</FormGroup>`
-    }
-    return result
-  }
+  // renderSeasons = (seasons) => {
+  //   let result = ''
+  //   for (var seasonNumber in seasons){
+  //     result += `<FormGroup>${seasonNumber}</FormGroup>`
+  //   }
+  //   return result
+  // }
 
   render(){
     console.log('showInfo', this.state.showInfo)
@@ -48,13 +49,15 @@ class searchPage extends Component {
     }
 
     const seasonSorted = this.state.airedEpisodes.reduce((sorted, episode)=> {
-      if (!sorted[episode.season]){
-        sorted[episode.season] = [episode]
+      if (!sorted[episode.season-1]){
+        sorted[episode.season-1] = [episode]
       } else{
-        sorted[episode.season].push(episode)
+        sorted[episode.season-1].push(episode)
       }
       return sorted
-    }, {})
+    }, [])
+
+    console.log(seasonSorted)
 
     return (<div>
       <Header />
@@ -72,7 +75,7 @@ class searchPage extends Component {
         </Row>
         <Row>
           <Form>
-          {this.renderSeasons(seasonSorted)}
+            {seasonSorted.map((season, index) => <Season season={season} seasonNumber={index+1} />)}
           </Form>
         </Row>
       </Container>
