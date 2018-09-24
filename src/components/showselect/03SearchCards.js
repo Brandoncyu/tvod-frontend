@@ -11,12 +11,13 @@ class searchCards extends Component {
   render(){
     const cardInfo = this.props.cardInfo
     console.log(cardInfo)
+
     return (
-      <Card body id={cardInfo.id}>
-        <CardImg top width="100%" src={cardInfo.image.medium} alt="Card image" />
-        <CardTitle>{cardInfo.name}</CardTitle>
-        <CardText>{cardInfo.summary}</CardText>
-        <Button>Watched!</Button>
+      <Card className="searchCards" body id={cardInfo.id}>
+        { cardInfo.image !== null && <CardImg className="mb-4" top width="100%" src={cardInfo.image.medium} alt="Card image" /> }
+        <CardTitle >{cardInfo.name}</CardTitle>
+        <CardText className="summary" dangerouslySetInnerHTML={ { __html: cardInfo.summary }}></CardText>
+        <Button color="primary">Watched!</Button>
       </Card>
     )
   }
