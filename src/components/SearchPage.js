@@ -32,18 +32,7 @@ class searchPage extends Component {
     })
   }
 
-  // renderSeasons = (seasons) => {
-  //   let result = ''
-  //   for (var seasonNumber in seasons){
-  //     result += `<FormGroup>${seasonNumber}</FormGroup>`
-  //   }
-  //   return result
-  // }
-
   render(){
-    console.log('showInfo', this.state.showInfo)
-
-
     if (!this.state.showInfo){
       return <div>Pending</div>
     }
@@ -56,8 +45,6 @@ class searchPage extends Component {
       }
       return sorted
     }, [])
-
-    console.log(seasonSorted)
 
     return (<div>
       <Header />
@@ -74,6 +61,7 @@ class searchPage extends Component {
           </Col>
         </Row>
         <Row>
+          <h3>Which Episodes have you seen?</h3>
           <Form>
             {seasonSorted.map((season, index) => <Season season={season} seasonNumber={index+1} />)}
           </Form>

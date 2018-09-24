@@ -4,7 +4,8 @@ import {
   FormGroup,
   Label,
   InputGroup,
-  Input
+  Input,
+  ListGroup
 } from 'reactstrap'
 
 class Season extends Component {
@@ -20,7 +21,9 @@ class Season extends Component {
           <Input type="checkbox" />
             Season {this.props.seasonNumber}
         </Label>
+        <ListGroup>
         { this.props.season.map(episodeInfo => {return <Episode episodeInfo={episodeInfo} />}) }
+        </ListGroup>
       </FormGroup>
     )
   }
