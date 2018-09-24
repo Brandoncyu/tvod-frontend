@@ -3,7 +3,6 @@ import {
   Navbar,
   NavbarBrand,
   Nav,
-  Button,
   NavItem,
   NavLink
 } from 'reactstrap';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Card, CardBody, Button, CardTitle, CardText, CardImg
+  Card, Button, CardTitle, CardText, CardImg
 } from 'reactstrap'
 
 class searchCards extends Component {
@@ -10,14 +10,14 @@ class searchCards extends Component {
 
   render(){
     const cardInfo = this.props.cardInfo
-    console.log(cardInfo)
+    const newURL = /shows/ + this.props.cardInfo.name.replace(/ /g, '+')
 
     return (
       <Card className="searchCards" body id={cardInfo.id}>
         { cardInfo.image !== null && <CardImg className="mb-4" top width="100%" src={cardInfo.image.medium} alt="Card image" /> }
         <CardTitle >{cardInfo.name}</CardTitle>
         <CardText className="summary" dangerouslySetInnerHTML={ { __html: cardInfo.summary }}></CardText>
-        <Button color="primary">Watched!</Button>
+        <Button href={newURL} color="primary">Watched!</Button>
       </Card>
     )
   }

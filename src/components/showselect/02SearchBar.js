@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import {
-  Container,
-  Row,
-  Col,
-  Form,
-  FormGroup,
   Input,
   InputGroup,
   InputGroupAddon,
   Button
 } from 'reactstrap'
 import { connect } from 'react-redux'
-import { searchAll, searchOne, searchOneWithEpisodes } from '../../models/showSelect'
 
 class SearchBar extends Component {
   constructor(props){

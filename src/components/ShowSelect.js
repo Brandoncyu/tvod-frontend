@@ -9,7 +9,7 @@ import Header from './Header'
 import Title from './showselect/01Title'
 import SearchBar from './showselect/02SearchBar'
 import SearchCards from './showselect/03SearchCards'
-import { searchAll, searchOne, searchOneWithEpisodes } from '../models/showSelect'
+import { searchAll } from '../models/showSelect'
 
 class ShowSelect extends Component {
   constructor(props){
