@@ -59,8 +59,6 @@ class searchPage extends Component {
       return sorted
     }, [])
 
-    console.log(this.state)
-
     return (<div>
       <Header />
       <Container>

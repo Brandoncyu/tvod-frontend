@@ -32,6 +32,7 @@ class Episode extends Component {
   }
 
   render(){
+    console.log(this.state)
     const airdate = moment(this.props.episodeInfo.airdate).format('MMMM Do YYYY')
 
     return (
