@@ -19,10 +19,10 @@ class Season extends Component {
       <FormGroup>
         <Label check>
           <Input type="checkbox" />
-            Season {this.props.seasonNumber}
+            Watched All
         </Label>
         <ListGroup>
-        { this.props.season.map(episodeInfo => {return <Episode episodeInfo={episodeInfo} />}) }
+        { this.props.season.map((episodeInfo, index) => {return <Episode key={index} showId={this.props.showId} episodeInfo={episodeInfo} />}) }
         </ListGroup>
       </FormGroup>
     )

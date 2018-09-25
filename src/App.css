@@ -35,3 +35,7 @@
   overflow-y: scroll;
   max-height: 300px;
 }
+
+.seasonLabels {
+  font-size: 20px
+}
