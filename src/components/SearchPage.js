@@ -45,6 +45,12 @@ class searchPage extends Component {
     })
   }
 
+  changeFavorite= () =>{
+    this.setState({
+      favorite: !this.state.watched
+    })
+  }
+
   render(){
     if (!this.state.showInfo){
       return <div>Pending</div>
@@ -71,7 +77,7 @@ class searchPage extends Component {
             { this.state.watched == false ? <Button onClick={this.changeWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.changeWatched} color="link">- Remove From My Shows</Button> }
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.state.showInfo.summary }}></p>
             <p><b>Genres</b>: {this.state.showInfo.genres.join(', ')}</p>
-            <p><b>Episodes Aired</b>: {this.state.airedEpisodes.length}</p>
+            <p><b>Episodes Aired</b>: {this.state.airedEpisodes.length} episodes</p>
           </Col>
         </Row>
         <Row>

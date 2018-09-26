@@ -8,11 +8,15 @@ import ShowSelect from './components/ShowSelect'
 import SearchPage from './components/SearchPage'
 import Follow from './components/Follow'
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
 class App extends Component {
   constructor(){
     super()
+
+    this.state={
+      isLoggedIn: false
+    }
   }
 
   componentDidMount = async() => {
@@ -21,29 +25,30 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
-      this.props.history.push(`/`)
     }
   }
 
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={()=>{
+        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} exact path="/" render={(props)=>{
           return <UserProfile />
         }} />
-        <Route exact path="/shows" render={()=>{
+        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} exact path="/shows" render={()=>{
           return <ShowSelect />
         }} />
-        <Route path="/shows/:name" render={(props)=>{
+        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} path="/shows/:name" render={(props)=>{
           return <SearchPage {...props} />
         }} />
-        <Route exact path="/following" render={()=>{
+        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} exact path="/following" render={()=>{
           return <Follow />
         }} />
-        <Route exact path="/register" render={()=>{
+        <Route exact path="/register" render={(props)=>{
+          if (this.state.isLoggedIn) return <Redirect to={ props.location.state ? props.location.state.from.pathname : "/" } />
           return <Register />
         }} />
-        <Route exact path="/login" render={()=>{
+        <Route exact path="/login" render={(props)=>{
+          if (this.state.isLoggedIn) return <Redirect to={ props.location.state ? props.location.state.from.pathname : "/" } />
           return <Login />
         }} />
         <Redirect to="/login" />
@@ -52,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

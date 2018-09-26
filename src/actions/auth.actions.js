@@ -24,7 +24,6 @@ export const userLogin = ({username, password}, history) =>{
       })
       localStorage.setItem('token', userObject.token)
       localStorage.setItem('id', userObject.id)
-      history.push('/')
     } catch(err){
       dispatch({
         type: USER_LOGIN_FAILED,
