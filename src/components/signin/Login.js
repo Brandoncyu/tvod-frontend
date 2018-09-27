@@ -28,7 +28,8 @@ class Login extends Component {
     event.preventDefault()
     const { username, password } = this.state
 
-    this.props.userLogin({username, password}, this.props.history)
+    this.props.userLogin({username, password})
+    if (!this.props.showLoginError) this.props.history.push('/')
   }
 
   render () {

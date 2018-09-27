@@ -32,15 +32,12 @@ class Episode extends Component {
   }
 
   render(){
-    console.log(this.state)
     const airdate = moment(this.props.episodeInfo.airdate).format('MMMM Do YYYY')
 
     return (
       <ListGroupItem>
-      <Label className="ml-3" check>
-        <Input type="checkbox" />
-      Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}
-        </Label><br />
+
+        <h5><Button size="sm" color="info">+</Button>{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5>
       <small>Airdate: {airdate}</small><br />
       <div className="summary" dangerouslySetInnerHTML={ { __html: this.props.episodeInfo.summary }}></div>
       <Label htmlFor="rating">Episode rating</Label> {' '}
@@ -54,6 +51,7 @@ class Episode extends Component {
       <br />
       <Label htmlFor="comment">Comments</Label>
         <Input type="textarea" name="text" id="comment" onChange={e => this.setState({comments: e.target.value})} />
+      <Button color="info" size="sm">Submit Comment</Button>
       </ListGroupItem>
     )
   }

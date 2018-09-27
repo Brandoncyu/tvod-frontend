@@ -1,5 +1,8 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 
 const AuthenticateRoute = (props) => {
   return <Route {...props} render={(locationProps) => {
@@ -12,4 +15,10 @@ const AuthenticateRoute = (props) => {
   }} />
 }
 
-export default AuthenticateRoute
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.auth.isLoggedIn,
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(AuthenticateRoute))

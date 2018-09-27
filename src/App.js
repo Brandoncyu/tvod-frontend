@@ -8,47 +8,44 @@ import ShowSelect from './components/ShowSelect'
 import SearchPage from './components/SearchPage'
 import Follow from './components/Follow'
 import './App.css';
+import { setUser } from './actions/auth.actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
 class App extends Component {
   constructor(){
     super()
-
-    this.state={
-      isLoggedIn: false
-    }
   }
 
   componentDidMount = async() => {
     const response = await auth.verify()
-    if (response){
-      this.setState({
-        isLoggedIn: true
-      })
+    if (response) {
+      this.props.setUser()
     }
   }
 
   render() {
     return (
       <Switch>
-        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} exact path="/" render={(props)=>{
+        <AuthenticateRoute exact path="/" render={(props)=>{
           return <UserProfile />
         }} />
-        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} exact path="/shows" render={()=>{
+        <AuthenticateRoute exact path="/shows" render={()=>{
           return <ShowSelect />
         }} />
-        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} path="/shows/:name" render={(props)=>{
+        <AuthenticateRoute path="/shows/:name" render={(props)=>{
           return <SearchPage {...props} />
         }} />
-        <AuthenticateRoute isLoggedIn={this.state.isLoggedIn} exact path="/following" render={()=>{
+        <AuthenticateRoute exact path="/following" render={()=>{
           return <Follow />
         }} />
-        <Route exact path="/register" render={(props)=>{
-          if (this.state.isLoggedIn) return <Redirect to={ props.location.state ? props.location.state.from.pathname : "/" } />
+        <Route exact path="/register" render={(locationProps)=>{
+          if (this.props.isLoggedIn) return <Redirect to={ locationProps.location.state ? locationProps.location.state.from.pathname : "/" } />
           return <Register />
         }} />
-        <Route exact path="/login" render={(props)=>{
-          if (this.state.isLoggedIn) return <Redirect to={ props.location.state ? props.location.state.from.pathname : "/" } />
+        <Route exact path="/login" render={(locationProps)=>{
+          if (this.props.isLoggedIn) return <Redirect to={ locationProps.location.state ? locationProps.location.state.from.pathname : "/" } />
           return <Login />
         }} />
         <Redirect to="/login" />
@@ -57,4 +54,16 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.auth.isLoggedIn,
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    setUser: bindActionCreators(setUser, dispatch)
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

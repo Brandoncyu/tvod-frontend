@@ -6,15 +6,20 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { userLogout } from '../actions/auth.actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props)
   }
-  removeToken() {
+  removeToken = (e) => {
+    e.preventDefault()
     localStorage.removeItem('token')
     localStorage.removeItem('id')
+    this.props.userLogout()
   }
   render() {
     return (
@@ -31,7 +36,7 @@ export default class Header extends Component {
             <NavItem>
               <NavLink tag={Link} to="/following">Following</NavLink>
             </NavItem>
-              <NavLink tag={Link} to="/login" onClick={this.removeToken}>Logout
+              <NavLink onClick={this.removeToken}>Logout
             </NavLink>
           </Nav>
         </Navbar>
@@ -39,3 +44,18 @@ export default class Header extends Component {
     );
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.auth.isLoggedIn,
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    userLogout: bindActionCreators(userLogout, dispatch)
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))

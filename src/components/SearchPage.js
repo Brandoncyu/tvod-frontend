@@ -47,7 +47,7 @@ class searchPage extends Component {
 
   changeFavorite= () =>{
     this.setState({
-      favorite: !this.state.watched
+      favorite: !this.state.favorite
     })
   }
 
@@ -74,14 +74,16 @@ class searchPage extends Component {
           </Col>
           <Col>
             <h1 className="mt-4">{this.state.showInfo.name}</h1>
-            { this.state.watched == false ? <Button onClick={this.changeWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.changeWatched} color="link">- Remove From My Shows</Button> }
+            { this.state.watched === false ? <Button onClick={this.changeWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.changeWatched} color="link">- Remove From My Shows</Button> }
+            { (this.state.watched === true && this.state.favorite === false) && <Button onClick={this.changeFavorite} color="link">☆ Add to My Favorite Shows</Button> }
+            { (this.state.watched === true && this.state.favorite === true) && <Button onClick={this.changeFavorite} color="link">★ Remove from My Favorite Shows</Button> }
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.state.showInfo.summary }}></p>
             <p><b>Genres</b>: {this.state.showInfo.genres.join(', ')}</p>
             <p><b>Episodes Aired</b>: {this.state.airedEpisodes.length} episodes</p>
           </Col>
         </Row>
         <Row>
-          {this.state.watched == true &&<div> <h3>Which Episodes have you seen?</h3>
+          {this.state.watched === true &&<div> <h3>Which Episodes have you seen?</h3>
           <Form>
             <Accordion>
               {seasonSorted.map((season, index) => {

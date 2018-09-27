@@ -6,6 +6,8 @@ export const USER_SIGNUP_PENDING = 'USER_SIGNUP_PENDING'
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
 export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED'
 
+export const SET_USER_ON_VERIFY = 'SET_USER_ON_VERIFY'
+
 export const USER_LOGOUT = 'USER_LOGOUT'
 
 export const userLogin = ({username, password}, history) =>{
@@ -55,5 +57,18 @@ export const registerUser = ({ firstname, lastname, email, username, password, a
         payload: err
       })
     }
+  }
+}
+
+export const setUser = (data) => {
+  return {
+    type: SET_USER_ON_VERIFY,
+    payload: data
+  }
+}
+
+export const userLogout = () => {
+  return async (dispatch) => {
+    dispatch({type: USER_LOGOUT})
   }
 }
