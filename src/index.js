@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 
 const storeInstance = store();

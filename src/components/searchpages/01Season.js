@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Episode from './02Episode'
 import {
-  FormGroup,
   Button,
-  InputGroup,
-  Input,
   ListGroup
 } from 'reactstrap'
 

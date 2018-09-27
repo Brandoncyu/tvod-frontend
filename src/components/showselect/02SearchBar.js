@@ -5,7 +5,6 @@ import {
   InputGroupAddon,
   Button
 } from 'reactstrap'
-import { connect } from 'react-redux'
 
 class SearchBar extends Component {
   constructor(props){

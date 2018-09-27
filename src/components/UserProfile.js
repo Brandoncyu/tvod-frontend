@@ -5,11 +5,6 @@ import Upcoming from './userprofile/02Upcoming'
 import Newest from './userprofile/03Newest'
 import FriendsSaying from './userprofile/04FriendsSaying'
 import Suggestions from './userprofile/05Suggestions'
-import {
-  Container,
-  Row,
-  Col
-} from 'reactstrap'
 import { connect } from 'react-redux'
 
 class UserProfile extends Component {

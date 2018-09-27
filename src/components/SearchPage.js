@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Container, Row, Col, Form, Button, ListGroup
+  Container, Row, Col, Form, Button
 } from 'reactstrap'
 import Header from './Header'
 import Season from './searchpages/01Season'
@@ -70,7 +70,7 @@ class searchPage extends Component {
       <Container>
         <Row>
           <Col md='3'>
-            { this.state.showInfo.image !== null && <img className="my-4" width="100%" src={this.state.showInfo.image.original} alt="Card image" /> }
+            { this.state.showInfo.image !== null && <img className="my-4" width="100%" src={this.state.showInfo.image.original} alt="Card" /> }
           </Col>
           <Col>
             <h1 className="mt-4">{this.state.showInfo.name}</h1>

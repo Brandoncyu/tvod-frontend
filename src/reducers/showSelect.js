@@ -1,5 +1,5 @@
 import {
-  SEARCH_SHOW
+  GET_RESULTS
 } from '../actions/showSelect'
 
 let initialState = {
@@ -8,7 +8,7 @@ let initialState = {
 
 export default(state = initialState, action) => {
   switch (action.type) {
-    case SEARCH_SHOW:
+    case GET_RESULTS:
       return {shows: action.payload}
     default:
       return state;

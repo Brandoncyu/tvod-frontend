@@ -9,25 +9,21 @@ import Header from './Header'
 import Title from './showselect/01Title'
 import SearchBar from './showselect/02SearchBar'
 import SearchCards from './showselect/03SearchCards'
-import { searchAll } from '../models/showSelect'
+import { searchAllShows } from '../actions/showSelect'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 class ShowSelect extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      shows: []
-    }
   }
 
   searchShows = async (search) =>{
-    const searchResult = await searchAll(search)
-    this.setState({
-      shows: searchResult
-    })
+    await this.props.searchAllShows(search)
   }
 
   render(){
-    const cards = this.state.shows.map(card=> card.show)
+    const cards = this.props.shows.map(card=> card.show)
     return (
       <div>
         <Header />
@@ -51,4 +47,16 @@ class ShowSelect extends Component {
   }
 }
 
-export default ShowSelect
+function mapStateToProps(state) {
+  return {
+    shows: state.search.shows
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    searchAllShows: bindActionCreators(searchAllShows, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowSelect)

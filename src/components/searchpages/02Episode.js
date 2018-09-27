@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import {
-  FormGroup,
   Label,
-  InputGroup,
   Input,
   ListGroupItem,
   Button,
