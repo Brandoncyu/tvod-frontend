@@ -3,7 +3,7 @@ import {
 } from '../actions/showSelect'
 
 let initialState = {
-  shows: {},
+  shows: [],
 };
 
 export default(state = initialState, action) => {

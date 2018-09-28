@@ -6,7 +6,7 @@ import Header from './Header'
 import Season from './searchpages/01Season'
 import Accordion from './accordion/Accordion';
 import { searchShowsWithEpisodes, getTvId } from '../actions/searchPage'
-import { checkIfWatched } from '../actions/userWatchedInfo'
+import { checkIfWatched, addWatchedShow, changeFavoriteShow, deleteWatchedShow } from '../actions/userWatchedInfo'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -29,16 +29,26 @@ class searchPage extends Component {
   }
 
 
-  changeWatched = () =>{
-    // this.setState({
-    //   watched: !this.state.watched
-    // })
+  addWatched = async() =>{
+    const userId = parseInt(localStorage.getItem('id'))
+    const tvId = this.props.shows.showInfo.id
+    const tvName = this.props.shows.showInfo.name
+    const image = this.props.shows.showInfo.image.medium
+    await this.props.addWatchedShow(userId, tvId, tvName, image)
   }
 
-  changeFavorite= () =>{
-    // this.setState({
-    //   favorite: !this.state.favorite
-    // })
+  deleteWatched = async() =>{
+    const watched = false
+    const tvId = this.props.watchedInfo.tv_id
+    const userId = this.props.watchedInfo.user_id
+    await this.props.deleteWatchedShow(userId, tvId)
+  }
+
+  changeFavorite= async() =>{
+    const favorite = !this.props.watchedInfo.favorite
+    const tvId = this.props.watchedInfo.tv_id
+    const userId = this.props.watchedInfo.user_id
+    await this.props.changeFavoriteShow(userId, tvId, favorite)
   }
 
   render(){
@@ -64,7 +74,7 @@ class searchPage extends Component {
           </Col>
           <Col>
             <h1 className="mt-4">{this.props.shows.showInfo.name}</h1>
-            { this.props.watchedInfo.watched === false ? <Button onClick={this.changeWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.changeWatched} color="link">- Remove From My Shows</Button> }
+            { this.props.watchedInfo.watched === false ? <Button onClick={this.addWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.deleteWatched} color="link">- Remove From My Shows</Button> }
             { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === false) && <Button onClick={this.changeFavorite} color="link">☆ Add to My Favorite Shows</Button> }
             { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === true) && <Button onClick={this.changeFavorite} color="link">★ Remove from My Favorite Shows</Button> }
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.props.shows.showInfo.summary }}></p>
@@ -78,7 +88,7 @@ class searchPage extends Component {
             <Accordion>
               {seasonSorted.map((season, index) => {
                 const seasonName = `Season ${index + 1}`
-                return <div className="seasonLabels" label={seasonName}><Season showId={this.props.shows.showInfo.id} key={index} season={season} seasonNumber={index+1} /></div>}
+                return <div className="seasonLabels" label={seasonName} key={index}><Season showId={this.props.shows.showInfo.id} key={index} season={season} seasonNumber={index+1} /></div>}
               )}
             </Accordion>
           </Form></div>}
@@ -99,7 +109,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch){
   return{
     searchShowsWithEpisodes: bindActionCreators(searchShowsWithEpisodes, dispatch),
-    checkIfWatched: bindActionCreators(checkIfWatched, dispatch)
+    checkIfWatched: bindActionCreators(checkIfWatched, dispatch),
+    addWatchedShow: bindActionCreators(addWatchedShow, dispatch),
+    deleteWatchedShow: bindActionCreators(deleteWatchedShow, dispatch),
+    changeFavoriteShow: bindActionCreators(changeFavoriteShow, dispatch)
   }
 }
 
