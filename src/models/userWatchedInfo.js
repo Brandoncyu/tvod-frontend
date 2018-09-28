@@ -33,8 +33,7 @@ export const addWatched = async (userid, tvId, name, image) =>{
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
   })
-  response.data.data.episodes = episodes.data.data.episodes
-  return response.data.data
+  return episodes.data.data
 }
 
 export const deleteWatched = async (userid, tvId) =>{
