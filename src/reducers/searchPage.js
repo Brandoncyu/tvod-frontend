@@ -1,6 +1,6 @@
 import {
-  GET_RESULTS
-} from '../actions/showSelect'
+  GET_RESULTS_AND_EPISODES
+} from '../actions/searchPage'
 
 let initialState = {
   shows: {},
@@ -8,7 +8,7 @@ let initialState = {
 
 export default(state = initialState, action) => {
   switch (action.type) {
-    case GET_RESULTS:
+    case GET_RESULTS_AND_EPISODES:
       return {shows: action.payload}
     default:
       return state;

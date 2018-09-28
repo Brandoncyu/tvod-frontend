@@ -5,47 +5,29 @@ import {
 import Header from './Header'
 import Season from './searchpages/01Season'
 import Accordion from './accordion/Accordion';
-import { searchShowsWithEpisodes } from '../actions/showSelect'
+import { searchShowsWithEpisodes, getTvId } from '../actions/searchPage'
+import { checkIfWatched } from '../actions/userWatchedInfo'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-// import { searchOneWithEpisodes } from '../models/showSelect'
-
 
 
 class searchPage extends Component {
   constructor(props){
     super(props)
-
-    this.state = {
-      // showInfo: '',
-      // episodes: [],
-      // airedEpisodes: []
-    }
   }
 
-  componentDidMount(){
-    this.getShowInfo()
+  componentDidMount() {
+    this.getShowandUserInfo()
   }
 
-  // getShowInfo = async ()=> {
-  //   const showInfo = await searchOneWithEpisodes(this.props.match.params.name)
-  //   const today = moment(new Date()).format('YYYY-MM-D')
-  //   this.setState({
-  //     showInfo: showInfo,
-  //     episodes: showInfo._embedded.episodes,
-  //     airedEpisodes: showInfo._embedded.episodes.filter(episode => today > episode.airdate),
-  //     user_id: parseInt(localStorage.getItem('id')),
-  //     tv_id: showInfo.id,
-  //     tv_name: showInfo.name,
-  //     watched: false,
-  //     favorite: false,
-  //   })
-  // }
 
-  getShowInfo = async () => {
+  getShowandUserInfo = async () => {
     const userid = parseInt(localStorage.getItem('id'))
     await this.props.searchShowsWithEpisodes(this.props.match.params.name, userid)
+    let tvId = await getTvId(this.props.match.params.name)
+    await this.props.checkIfWatched(userid, tvId)
   }
+
 
   changeWatched = () =>{
     // this.setState({
@@ -60,7 +42,6 @@ class searchPage extends Component {
   }
 
   render(){
-    console.log(this.props)
     if (!this.props.shows.showInfo){
       return <div>Pending</div>
     }
@@ -73,7 +54,7 @@ class searchPage extends Component {
       }
       return sorted
     }, [])
-    console.log('seasonsorted', seasonSorted)
+
     return (<div>
       <Header />
       <Container>
@@ -83,16 +64,16 @@ class searchPage extends Component {
           </Col>
           <Col>
             <h1 className="mt-4">{this.props.shows.showInfo.name}</h1>
-            { this.props.shows.watched === false ? <Button onClick={this.changeWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.changeWatched} color="link">- Remove From My Shows</Button> }
-            { (this.state.watched === true && this.state.favorite === false) && <Button onClick={this.changeFavorite} color="link">☆ Add to My Favorite Shows</Button> }
-            { (this.props.watched === true && this.state.favorite === true) && <Button onClick={this.changeFavorite} color="link">★ Remove from My Favorite Shows</Button> }
+            { this.props.watchedInfo.watched === false ? <Button onClick={this.changeWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.changeWatched} color="link">- Remove From My Shows</Button> }
+            { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === false) && <Button onClick={this.changeFavorite} color="link">☆ Add to My Favorite Shows</Button> }
+            { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === true) && <Button onClick={this.changeFavorite} color="link">★ Remove from My Favorite Shows</Button> }
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.props.shows.showInfo.summary }}></p>
             <p><b>Genres</b>: {this.props.shows.showInfo.genres.join(', ')}</p>
-            <p><b>Episodes Aired</b>: {this.props.shows.airedEpisodes.length} episodes</p>
+            <p><b>Episodes Aired</b>: {this.props.shows.airedEpisodes.length}</p>
           </Col>
         </Row>
         <Row>
-          {this.props.shows.watched === true &&<div> <h3>Which Episodes have you seen?</h3>
+          {this.props.watchedInfo.watched === true &&<div> <h3>Which Episodes have you seen?</h3>
           <Form>
             <Accordion>
               {seasonSorted.map((season, index) => {
@@ -110,13 +91,15 @@ class searchPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    shows: state.search.shows
+    shows: state.showInfo.shows,
+    watchedInfo: state.watchedInfo.userWatched
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    searchShowsWithEpisodes: bindActionCreators(searchShowsWithEpisodes, dispatch)
+    searchShowsWithEpisodes: bindActionCreators(searchShowsWithEpisodes, dispatch),
+    checkIfWatched: bindActionCreators(checkIfWatched, dispatch)
   }
 }
 
