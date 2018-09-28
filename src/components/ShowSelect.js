@@ -30,14 +30,11 @@ class ShowSelect extends Component {
         <Title />
         <Container>
           <Row>
-            <Col md="9">
+            <Col>
               <SearchBar searchShows={this.searchShows} />
               <CardColumns className="my-4">
               {cards.map((cardInfo, index) => <SearchCards key={index} cardInfo={cardInfo} />)}
               </CardColumns>
-            </Col>
-            <Col>
-              <h4>Your Shows</h4>
             </Col>
           </Row>
         </Container>
