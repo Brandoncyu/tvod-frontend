@@ -1,6 +1,6 @@
 import {
   GET_WATCHED, ADD_WATCHED, DELETE_WATCHED, CHANGE_FAVORITE
-} from '../actions/userWatchedInfo'
+} from '../actions/userSeriesWatched'
 
 let initialState = {
   userWatched: {

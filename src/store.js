@@ -4,12 +4,13 @@ import thunkMiddleware from 'redux-thunk';
 import authReducer from './reducers/auth.reducers'
 import searchReducer from './reducers/showSelect'
 import showReducer from './reducers/searchPage'
-import watchedReducer from './reducers/userWatchedInfo'
+import watchedReducer from './reducers/userSeriesWatched'
+import episodeReducer from './reducers/userEpisodesWatched'
 
 export default(initialState) => {
-  const reducer = combineReducers({auth: authReducer, search: searchReducer, showInfo: showReducer, watchedInfo: watchedReducer})
+  const reducer = combineReducers({auth: authReducer, search: searchReducer, showInfo: showReducer, watchedInfo: watchedReducer, episodeInfo: episodeReducer })
     return createStore(
       reducer,
-      applyMiddleware(logger, thunkMiddleware)
+      applyMiddleware(thunkMiddleware, logger)
     );
 }

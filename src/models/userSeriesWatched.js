@@ -14,7 +14,7 @@ export const checkSeries = async (userid, tvId) => {
 }
 
 export const addWatched = async (userid, tvId, name, image) =>{
-  const response = await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series`, {
+  await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}`, {
     method: 'POST',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -33,7 +33,7 @@ export const addWatched = async (userid, tvId, name, image) =>{
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
   })
-  
+
   return episodes.data.data
 }
 
@@ -61,4 +61,5 @@ export const changeFavorite = async (userid, tvId, favorite) =>{
       favorite
     }
   })
+  return response.data.data
 }

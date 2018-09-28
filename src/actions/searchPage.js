@@ -1,5 +1,5 @@
 import {searchAll, searchOneWithEpisodes} from '../models/showSelect'
-import {checkIfWatched} from './userWatchedInfo'
+import {checkIfWatched} from './userSeriesWatched'
 const moment = require('moment')
 export const GET_RESULTS_AND_EPISODES = 'GET_RESULTS_AND_EPISODES'
 

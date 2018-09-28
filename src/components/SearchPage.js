@@ -6,7 +6,8 @@ import Header from './Header'
 import Season from './searchpages/01Season'
 import Accordion from './accordion/Accordion';
 import { searchShowsWithEpisodes, getTvId } from '../actions/searchPage'
-import { checkIfWatched, addWatchedShow, changeFavoriteShow, deleteWatchedShow } from '../actions/userWatchedInfo'
+import { checkIfWatched, addWatchedShow, changeFavoriteShow, deleteWatchedShow } from '../actions/userSeriesWatched'
+import { getAllEpisodes, addEpisode } from '../actions/userEpisodesWatched'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -26,6 +27,7 @@ class searchPage extends Component {
     await this.props.searchShowsWithEpisodes(this.props.match.params.name, userid)
     let tvId = await getTvId(this.props.match.params.name)
     await this.props.checkIfWatched(userid, tvId)
+    await this.props.getAllEpisodes(userid, tvId)
   }
 
 
@@ -88,7 +90,7 @@ class searchPage extends Component {
             <Accordion>
               {seasonSorted.map((season, index) => {
                 const seasonName = `Season ${index + 1}`
-                return <div className="seasonLabels" label={seasonName} key={index}><Season showId={this.props.shows.showInfo.id} key={index} season={season} seasonNumber={index+1} /></div>}
+                return <div className="seasonLabels" label={seasonName} key={index}><Season addEpisodeToDatabase={this.addEpisodeToDatabase} showId={this.props.shows.showInfo.id} key={index} season={season} seasonNumber={index+1} /></div>}
               )}
             </Accordion>
           </Form></div>}
@@ -102,7 +104,9 @@ class searchPage extends Component {
 function mapStateToProps(state) {
   return {
     shows: state.showInfo.shows,
-    watchedInfo: state.watchedInfo.userWatched
+    watchedInfo: state.watchedInfo.userWatched,
+    episodeInfo: state.episodeInfo.episodesWatched.episodeInfo,
+    episodeIds: state.episodeInfo.episodesWatched.episodeIds
   }
 }
 
@@ -112,7 +116,9 @@ function mapDispatchToProps(dispatch){
     checkIfWatched: bindActionCreators(checkIfWatched, dispatch),
     addWatchedShow: bindActionCreators(addWatchedShow, dispatch),
     deleteWatchedShow: bindActionCreators(deleteWatchedShow, dispatch),
-    changeFavoriteShow: bindActionCreators(changeFavoriteShow, dispatch)
+    changeFavoriteShow: bindActionCreators(changeFavoriteShow, dispatch),
+    getAllEpisodes: bindActionCreators(getAllEpisodes, dispatch),
+    addEpisode: bindActionCreators(addEpisode, dispatch)
   }
 }
 
