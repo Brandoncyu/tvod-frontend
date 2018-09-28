@@ -14,7 +14,7 @@ export const checkSeries = async (userid, tvId) => {
 }
 
 export const addWatched = async (userid, tvId, name, image) =>{
-  await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}`, {
+  await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/`, {
     method: 'POST',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
