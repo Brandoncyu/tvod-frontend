@@ -5,7 +5,7 @@ import {
   Col
 } from 'reactstrap'
 
-const Suggestions = ({  }) => {
+const Suggestions = () => {
   return (
     <Container>
       <Row>

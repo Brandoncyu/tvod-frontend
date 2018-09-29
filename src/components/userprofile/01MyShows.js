@@ -2,20 +2,25 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col
+  Col,
+  CardDeck
 } from 'reactstrap'
 
-const MyShows = ({  }) => {
+const MyShows = () => {
   return (
     <Container>
       <Row>
         <Col>
           <h1 className="text-center">My Favorite Shows</h1>
+          <CardDeck>
+          </CardDeck>
         </Col>
       </Row>
       <Row>
         <Col>
-          <h1 className="text-center">Other Shows I've Watched</h1>
+          <h1 className="text-center">Other Shows Ive Watched</h1>
+          <CardDeck>
+          </CardDeck>
         </Col>
       </Row>
     </Container>

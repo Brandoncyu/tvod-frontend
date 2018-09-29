@@ -5,7 +5,7 @@ import {
   Col
 } from 'reactstrap'
 
-const Newest = ({  }) => {
+const Newest = () => {
   return (
     <Container>
       <Row>

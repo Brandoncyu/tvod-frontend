@@ -5,7 +5,7 @@ import {
   Col
 } from 'reactstrap'
 
-const FriendsSaying = ({  }) => {
+const FriendsSaying = () => {
   return (
     <Container>
       <Row>

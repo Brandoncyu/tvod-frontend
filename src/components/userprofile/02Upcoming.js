@@ -5,12 +5,12 @@ import {
   Col
 } from 'reactstrap'
 
-const Upcoming = ({  }) => {
+const Upcoming = () => {
   return (
     <Container>
       <Row>
         <Col>
-          <h1 className="text-center">What's Upcoming?</h1>
+          <h1 className="text-center">Whats Upcoming?</h1>
         </Col>
       </Row>
     </Container>
