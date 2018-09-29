@@ -11,6 +11,11 @@ export const searchOne = async (title) => {
   return response.data
 }
 
+export const searchOneByNumber = async (id) => {
+  const response = await axios.get(`${TV_URL}/shows/${id}/episodes`)
+  return response.data.length
+}
+
 export const searchOneWithEpisodes = async (title) => {
   const response = await axios.get(`${TV_URL}/singlesearch/shows?q=${title}&embed=episodes`)
   return response.data
