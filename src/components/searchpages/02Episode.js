@@ -73,7 +73,7 @@ class Episode extends Component {
 
   render(){
     const airdate = moment(this.props.episodeInfo.airdate).format('MMMM Do YYYY')
-    const abstraction = this.checkId || this.state.selected === true || this.props.checkedAll
+    const abstraction = this.checkId || this.state.selected === true || this.props.checkedAll || this.props.checkedAllSeries
     return (
       <ListGroupItem>
         {abstraction ? <h5>✓{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5> : <h5><Button size="sm" color="info" onClick={this.addEpisodeAction} >+</Button>{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5>}

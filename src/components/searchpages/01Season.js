@@ -40,7 +40,7 @@ class Season extends Component {
       <div>
         <Button onClick={this.checkedAllEpisodes} color="info" size="sm">+ Watched All</Button><br />
         <ListGroup>
-        { this.props.season.map((episodeInfo, index) => {return <Episode key={index} showId={this.props.showId} checkedAll={this.state.checkedAll}  episodeInfo={episodeInfo} />}) }
+        { this.props.season.map((episodeInfo, index) => {return <Episode key={index} showId={this.props.showId} checkedAll={this.state.checkedAll} checkedAllSeries={this.props.checkedAllSeries} episodeInfo={episodeInfo} />}) }
         </ListGroup>
       </div>
     )

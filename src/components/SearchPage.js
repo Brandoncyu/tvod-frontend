@@ -15,6 +15,10 @@ import { bindActionCreators } from 'redux'
 class searchPage extends Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      checkedAllSeries: false,
+    }
   }
 
   componentDidMount() {
@@ -52,6 +56,27 @@ class searchPage extends Component {
     await this.props.changeFavoriteShow(userId, tvId, favorite)
   }
 
+  checkedAllEpisodes = () =>{
+    const watchedEpisodes = this.props.watchedInfo.episodes
+    const watchedEpisodeIds = watchedEpisodes.map(element=>
+      element['ep_id'])
+    const airedEpisodes = this.props.shows.airedEpisodes
+    const showId = this.props.shows.showInfo.id
+    const unwatchedEpisodes = airedEpisodes.filter(element => !watchedEpisodeIds.includes(element['id']))
+    unwatchedEpisodes.forEach(async episode =>  {
+      const userId = parseInt(localStorage.getItem('id'))
+      const tvId = showId
+      const epId = episode.id
+      const seasonNo = episode.season
+      const epNo = episode.number
+      const epName = episode.name
+      await this.props.addEpisode(userId, tvId, epId, seasonNo, epNo, epName)
+    })
+    this.setState({
+      checkedAllSeries: true
+    })
+  }
+
   render(){
     if (!this.props.shows.showInfo){
       return <div>Pending</div>
@@ -81,6 +106,7 @@ class searchPage extends Component {
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.props.shows.showInfo.summary }}></p>
             <p><b>Genres</b>: {this.props.shows.showInfo.genres.join(', ')}</p>
             <p><b>Episodes Aired</b>: {this.props.shows.airedEpisodes.length}</p>
+            {this.props.watchedInfo.watched === true && <Button onClick={this.checkedAllEpisodes} color="primary" size="md">+ I have watched the whole series</Button>}
           </Col>
         </Row>
         <Row>
@@ -89,7 +115,7 @@ class searchPage extends Component {
             <Accordion>
               {seasonSorted.map((season, index) => {
                 const seasonName = `Season ${index + 1}`
-                return <div className="seasonLabels" label={seasonName} key={index}><Season addEpisodeToDatabase={this.addEpisodeToDatabase} showId={this.props.shows.showInfo.id} key={index} season={season} seasonNumber={index+1} /></div>}
+                return <div className="seasonLabels" label={seasonName} key={index}><Season addEpisodeToDatabase={this.addEpisodeToDatabase} showId={this.props.shows.showInfo.id} checkedAllSeries={this.state.checkedAllSeries} key={index} season={season} seasonNumber={index+1} /></div>}
               )}
             </Accordion>
           </Form></div>}
