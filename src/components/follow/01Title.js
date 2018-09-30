@@ -5,7 +5,7 @@ import {
   Col
 } from 'reactstrap'
 
-const Title = ({  }) => {
+const Title = () => {
   return (
     <Container>
       <Row>

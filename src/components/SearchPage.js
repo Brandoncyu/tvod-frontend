@@ -40,7 +40,6 @@ class searchPage extends Component {
   }
 
   deleteWatched = async() =>{
-    const watched = false
     const tvId = this.props.watchedInfo.tv_id
     const userId = this.props.watchedInfo.user_id
     await this.props.deleteWatchedShow(userId, tvId)

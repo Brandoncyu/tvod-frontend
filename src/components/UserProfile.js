@@ -37,16 +37,10 @@ class UserProfile extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.auth.user
-  }
-}
-
 function mapDispatchToProps(dispatch){
   return {
     getAllSeries: bindActionCreators(getAllSeries, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(null, mapDispatchToProps)(UserProfile)
