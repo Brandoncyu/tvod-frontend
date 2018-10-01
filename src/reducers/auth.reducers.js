@@ -32,7 +32,7 @@ export default(state = initialState, action) => {
     case USER_SIGNUP_FAILED:
       return {...state, isLoading: false, showSignupError: true}
     case USER_LOGOUT:
-      return {...state, isLoggedIn: false}
+      return {...state, isLoggedIn: false, showLoginError: false, showSignupError: false}
     case SET_USER_ON_VERIFY:
       return {...state, isLoggedIn: true, user: action.payload}
     default:

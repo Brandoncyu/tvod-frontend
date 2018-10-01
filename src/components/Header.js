@@ -19,6 +19,7 @@ class Header extends Component {
     e.preventDefault()
     localStorage.removeItem('token')
     localStorage.removeItem('id')
+    this.props.history.push('/login')
     this.props.userLogout()
   }
   render() {

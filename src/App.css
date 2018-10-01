@@ -48,7 +48,7 @@
 .card-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
-  height: 450px;
+  height: 470px;
   .card {
     display: inline-block;
   }
