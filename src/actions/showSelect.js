@@ -1,4 +1,4 @@
-import {searchAll, searchOneWithEpisodes} from '../models/showSelect'
+import {searchAll} from '../models/showSelect'
 export const GET_RESULTS = 'GET_RESULTS'
 export const CLEAR_SEARCH = 'CLEAR_SEARCH'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Card, Button, CardTitle, CardText, CardImg, Progress, CardFooter
+  Card, CardTitle, CardText, CardImg, Progress
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 

@@ -38,7 +38,7 @@ export const addWatched = async (userid, tvId, name, image) =>{
 }
 
 export const deleteWatched = async (userid, tvId) =>{
-  const response = await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}`, {
+  await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}`, {
     method: 'DELETE',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`

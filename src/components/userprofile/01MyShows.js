@@ -2,9 +2,7 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col,
-  CardDeck,
-  CardGroup
+  Col
 } from 'reactstrap'
 import {shuffle} from './01MyShows/shuffle'
 import ShowCards from './01MyShows/ShowCards'
