@@ -24,7 +24,6 @@ class UserProfile extends Component {
   }
 
   render(){
-    console.log(parseInt(localStorage.getItem('id')))
     return (
       <div>
         <Header />
