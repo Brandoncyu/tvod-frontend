@@ -8,10 +8,10 @@ let initialState = {
 
 export default(state = initialState, action) => {
   switch (action.type) {
-    case GET_RESULTS:
-      return {shows: action.payload}
     case CLEAR_SEARCH:
       return {shows: []}
+    case GET_RESULTS:
+      return {shows: action.payload}
     default:
       return state;
   }

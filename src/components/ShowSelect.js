@@ -9,13 +9,17 @@ import Header from './Header'
 import Title from './showselect/01Title'
 import SearchBar from './showselect/02SearchBar'
 import SearchCards from './showselect/03SearchCards'
-import { searchAllShows } from '../actions/showSelect'
+import { searchAllShows, clearSearch } from '../actions/showSelect'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class ShowSelect extends Component {
   constructor(props){
     super(props)
+  }
+
+  componentDidMount() {
+    this.props.clearSearch()
   }
 
   searchShows = async (search) =>{
@@ -52,7 +56,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
   return{
-    searchAllShows: bindActionCreators(searchAllShows, dispatch)
+    searchAllShows: bindActionCreators(searchAllShows, dispatch),
+    clearSearch: bindActionCreators(clearSearch, dispatch)
   }
 }
 

@@ -11,3 +11,11 @@ export const searchAllShows = (title) => {
     })
   }
 }
+
+export const clearSearch = () =>{
+  return async (dispatch) =>{
+    dispatch({
+      type: CLEAR_SEARCH
+    })
+  }
+}
