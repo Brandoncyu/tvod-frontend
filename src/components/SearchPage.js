@@ -72,28 +72,6 @@ class searchPage extends Component {
     })
   }
 
-  // checkedAllEpisodes = () =>{
-  //   const watchedEpisodeIds = this.state.watchedShowIds
-  //   const airedEpisodes = this.props.shows.airedEpisodes
-  //   const showId = this.props.shows.showInfo.id
-  //   const unwatchedEpisodes = airedEpisodes.filter(element => !watchedEpisodeIds.includes(element['id']))
-  //   unwatchedEpisodes.forEach(async episode =>  {
-  //     const userId = parseInt(localStorage.getItem('id'))
-  //     const tvId = showId
-  //     const tvName = this.props.shows.showInfo.name
-  //     const image = this.props.shows.showInfo.image.medium
-  //     const epId = episode.id
-  //     const seasonNo = episode.season
-  //     const epNo = episode.number
-  //     const epName = episode.name
-  //     await this.props.addEpisode(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
-  //     this.addToWatchedIds(episode.id)
-  //   })
-  //   this.setState({
-  //     checkedAllSeries: true,
-  //   })
-  // }
-
   checkedAllEpisodes = async() =>{
     const watchedEpisodeIds = this.state.watchedShowIds
     const airedEpisodes = this.props.shows.airedEpisodes

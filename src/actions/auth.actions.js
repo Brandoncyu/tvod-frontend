@@ -19,13 +19,14 @@ export const userLogin = ({username, password}, history) =>{
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({username, password})
       })
+      if (response.status !== 200) throw new Error ('Login Failed')
       let userObject = await response.json()
+      localStorage.setItem('token', userObject.token)
+      localStorage.setItem('id', userObject.id)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: userObject
       })
-      localStorage.setItem('token', userObject.token)
-      localStorage.setItem('id', userObject.id)
     } catch(err){
       dispatch({
         type: USER_LOGIN_FAILED,
@@ -44,13 +45,15 @@ export const registerUser = ({ firstname, lastname, email, username, password, a
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ firstname, lastname, email, username, password, aboutme, values })
       })
+      if (response.status !== 200) throw new Error ('Login Failed')
       let userObject = await response.json()
+      localStorage.setItem('token', userObject.token)
+      localStorage.setItem('id', userObject.id)
       dispatch({
         type: USER_SIGNUP_SUCCESS,
         payload: userObject
       })
-      localStorage.setItem('token', userObject.token)
-      localStorage.setItem('id', userObject.id)
+
     } catch(err){
       dispatch({
         type: USER_SIGNUP_FAILED,
