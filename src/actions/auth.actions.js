@@ -45,7 +45,8 @@ export const registerUser = ({ firstname, lastname, email, username, password, a
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ firstname, lastname, email, username, password, aboutme, values })
       })
-      if (response.status !== 200) throw new Error ('Login Failed')
+      console.log(response)
+      if (response.status !== 201) throw new Error ('Login Failed')
       let userObject = await response.json()
       localStorage.setItem('token', userObject.token)
       localStorage.setItem('id', userObject.id)

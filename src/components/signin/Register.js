@@ -27,14 +27,14 @@ class Register extends Component {
     }
   }
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault()
     let { firstname, lastname, email, username, password, aboutme } = this.state
     var options = Array.from(event.target['register-select'].options)
     let values = options.filter(option => option.selected)
       .map(option => parseInt(option.value))
 
-    this.props.registerUser({ firstname, lastname, email, username, password, aboutme, values })
+    await this.props.registerUser({ firstname, lastname, email, username, password, aboutme, values })
 
     if (!this.props.showSignupError) this.props.history.push('/')
   }
@@ -126,6 +126,10 @@ class Register extends Component {
               </FormGroup>
               <Button color="primary">Register!</Button>
             </Form>
+            <br />
+            { this.props.showSignupError &&
+              <p className="font-weight-bold text-danger">Username or Email Already Taken. Please Try Again.</p>
+               }
           </Col>
           <Col xs="3"></Col>
         </Row>

@@ -24,11 +24,11 @@ class Login extends Component {
     }
   }
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault()
     const { username, password } = this.state
 
-    this.props.userLogin({username, password})
+    await this.props.userLogin({username, password})
     if (!this.props.showLoginError) this.props.history.push('/')
   }
 
@@ -59,12 +59,14 @@ class Login extends Component {
                   placeholder="Enter Your Password"
                   value={this.state.password}
                   onChange={e => this.setState({password: e.target.value})} />
-              </FormGroup>
-              <FormGroup>
                 <a href="./register">I am not yet registered, sign me up to T.V.O.D.</a>
               </FormGroup>
               <Button color="primary">Login!</Button>
             </Form>
+            <br />
+            { this.props.showLoginError &&
+              <p className="font-weight-bold text-danger">Username and Password Combination Not Found. Please Try Again.</p>
+               }
           </Col>
           <Col xs="3"></Col>
         </Row>
