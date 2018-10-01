@@ -42,6 +42,8 @@ class Episode extends Component {
   addEpisodeAction = async() => {
     const userId = parseInt(localStorage.getItem('id'))
     const tvId = this.props.showId
+    const tvName = this.props.name
+    const image = this.props.image
     const epId = this.props.episodeInfo.id
     const seasonNo = this.props.episodeInfo.season
     const epNo = this.props.episodeInfo.number
@@ -49,7 +51,8 @@ class Episode extends Component {
     this.setState({
       selected: true
     })
-    await this.props.addEpisode(userId, tvId, epId, seasonNo, epNo, epName)
+    this.props.addToWatchedIds(epId)
+    await this.props.addEpisode(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
   }
 
   addRatingAction = async (rating) => {

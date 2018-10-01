@@ -17,7 +17,7 @@ class searchPage extends Component {
     super(props)
 
     this.state = {
-      checkedAllSeries: false,
+      checkedAllSeries: false
     }
   }
 
@@ -32,8 +32,11 @@ class searchPage extends Component {
     let tvId = await getTvId(this.props.match.params.name)
     await this.props.checkIfWatched(userid, tvId)
     await this.props.getAllEpisodes(userid, tvId)
+    let watchedShowIds = this.props.watchedInfo.episodes.map(element=>element['ep_id'])
+    this.setState({
+      watchedShowIds: watchedShowIds
+    })
   }
-
 
   addWatched = async() =>{
     const userId = parseInt(localStorage.getItem('id'))
@@ -56,24 +59,34 @@ class searchPage extends Component {
     await this.props.changeFavoriteShow(userId, tvId, favorite)
   }
 
+  addToWatchedIds = (id) =>{
+    const newWatchedShowId = this.state.watchedShowIds
+    newWatchedShowId.push(id)
+
+    this.setState({
+      watchedShowIds: newWatchedShowId
+    })
+  }
+
   checkedAllEpisodes = () =>{
-    const watchedEpisodes = this.props.watchedInfo.episodes
-    const watchedEpisodeIds = watchedEpisodes.map(element=>
-      element['ep_id'])
+    const watchedEpisodeIds = this.state.watchedShowIds
     const airedEpisodes = this.props.shows.airedEpisodes
     const showId = this.props.shows.showInfo.id
     const unwatchedEpisodes = airedEpisodes.filter(element => !watchedEpisodeIds.includes(element['id']))
     unwatchedEpisodes.forEach(async episode =>  {
       const userId = parseInt(localStorage.getItem('id'))
       const tvId = showId
+      const tvName = this.props.shows.showInfo.name
+      const image = this.props.shows.showInfo.image.medium
       const epId = episode.id
       const seasonNo = episode.season
       const epNo = episode.number
       const epName = episode.name
-      await this.props.addEpisode(userId, tvId, epId, seasonNo, epNo, epName)
+      await this.props.addEpisode(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
+      this.addToWatchedIds(episode.id)
     })
     this.setState({
-      checkedAllSeries: true
+      checkedAllSeries: true,
     })
   }
 
@@ -115,7 +128,7 @@ class searchPage extends Component {
             <Accordion>
               {seasonSorted.map((season, index) => {
                 const seasonName = `Season ${index + 1}`
-                return <div className="seasonLabels" label={seasonName} key={index}><Season addEpisodeToDatabase={this.addEpisodeToDatabase} showId={this.props.shows.showInfo.id} checkedAllSeries={this.state.checkedAllSeries} key={index} season={season} seasonNumber={index+1} /></div>}
+                return <div className="seasonLabels" label={seasonName} key={index}><Season addEpisodeToDatabase={this.addEpisodeToDatabase} showId={this.props.shows.showInfo.id} name={this.props.shows.showInfo.name} image={this.props.shows.showInfo.image.medium} watchedShowIds={this.state.watchedShowIds} addToWatchedIds={this.addToWatchedIds} checkedAllSeries={this.state.checkedAllSeries} key={index} season={season} seasonNumber={index+1} /></div>}
               )}
             </Accordion>
           </Form></div>}

@@ -18,9 +18,9 @@ export const getAllEpisodes = (userid, tvId) =>{
   }
 }
 
-export const addEpisode = (userId, tvId, epId, seasonNo, epNo, epName) =>{
+export const addEpisode = (userId, tvId, tvName, image, epId, seasonNo, epNo, epName) =>{
   return async (dispatch) => {
-    let response = await addEpisodeToDatabase(userId, tvId, epId, seasonNo, epNo, epName)
+    let response = await addEpisodeToDatabase(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
 
     const epInfo = {
       episodeInfo: response,

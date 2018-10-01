@@ -13,7 +13,7 @@ export const getEpisodes = async (userid, tvId) => {
   }
 }
 
-export const addEpisodeToDatabase = async (userid, tvId, epId, seasonNo, epNo, epName)=>{
+export const addEpisodeToDatabase = async (userid, tvId, tvName, image, epId, seasonNo, epNo, epName)=>{
   await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}/episodes`, {
     method: 'POST',
     headers: {
@@ -22,6 +22,8 @@ export const addEpisodeToDatabase = async (userid, tvId, epId, seasonNo, epNo, e
     data: {
       user_id: userid,
       tv_id: tvId,
+      tv_name: tvName,
+      image: image,
       ep_id: epId,
       season_no: seasonNo,
       ep_no: epNo,
