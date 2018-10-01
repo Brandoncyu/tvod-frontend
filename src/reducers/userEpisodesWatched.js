@@ -1,5 +1,5 @@
 import {
-  GET_EPISODES, ADD_EPISODE, ADD_COMMENT, ADD_RATING
+  GET_EPISODES, ADD_EPISODE, ADD_COMMENT, ADD_RATING, ADD_MULTIPLE_EPISODES
 } from '../actions/userEpisodesWatched'
 
 let initialState = {
@@ -14,9 +14,10 @@ export default(state = initialState, action) => {
       return {episodesWatched: action.payload}
     case ADD_RATING:
       return {episodesWatched: action.payload}
-    case ADD_EPISODE:{
+    case ADD_EPISODE:
       return {episodesWatched: action.payload}
-    }
+    case ADD_MULTIPLE_EPISODES:
+      return {episodesWatched: action.payload}
     default:
       return state;
   }

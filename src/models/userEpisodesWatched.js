@@ -39,6 +39,24 @@ export const addEpisodeToDatabase = async (userid, tvId, tvName, image, epId, se
   return response.data.data
 }
 
+export const addMultipleEpisodeToDatabase = async (userid, tvId, episodes)=>{
+  await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}/episodes/multiple`, {
+    method: 'POST',
+    headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    data: {
+      episodes
+    }
+  })
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}/episodes`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  return response.data.data
+}
+
 export const addCommentToDatabase = async (userid, tvId, epId, comments)=>{
   await axios(`${process.env.REACT_APP_API_URL}/api/users/${userid}/series/${tvId}/episodes/${epId}`, {
     method: 'PATCH',

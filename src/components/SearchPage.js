@@ -7,7 +7,7 @@ import Season from './searchpages/01Season'
 import Accordion from './accordion/Accordion';
 import { searchShowsWithEpisodes, getTvId } from '../actions/searchPage'
 import { checkIfWatched, addWatchedShow, changeFavoriteShow, deleteWatchedShow } from '../actions/userSeriesWatched'
-import { getAllEpisodes, addEpisode } from '../actions/userEpisodesWatched'
+import { getAllEpisodes, addEpisode, addMultipleEpisodes } from '../actions/userEpisodesWatched'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -72,23 +72,50 @@ class searchPage extends Component {
     })
   }
 
-  checkedAllEpisodes = () =>{
+  // checkedAllEpisodes = () =>{
+  //   const watchedEpisodeIds = this.state.watchedShowIds
+  //   const airedEpisodes = this.props.shows.airedEpisodes
+  //   const showId = this.props.shows.showInfo.id
+  //   const unwatchedEpisodes = airedEpisodes.filter(element => !watchedEpisodeIds.includes(element['id']))
+  //   unwatchedEpisodes.forEach(async episode =>  {
+  //     const userId = parseInt(localStorage.getItem('id'))
+  //     const tvId = showId
+  //     const tvName = this.props.shows.showInfo.name
+  //     const image = this.props.shows.showInfo.image.medium
+  //     const epId = episode.id
+  //     const seasonNo = episode.season
+  //     const epNo = episode.number
+  //     const epName = episode.name
+  //     await this.props.addEpisode(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
+  //     this.addToWatchedIds(episode.id)
+  //   })
+  //   this.setState({
+  //     checkedAllSeries: true,
+  //   })
+  // }
+
+  checkedAllEpisodes = async() =>{
     const watchedEpisodeIds = this.state.watchedShowIds
     const airedEpisodes = this.props.shows.airedEpisodes
-    const showId = this.props.shows.showInfo.id
+    const tvId = this.props.shows.showInfo.id
+    const userId = parseInt(localStorage.getItem('id'))
     const unwatchedEpisodes = airedEpisodes.filter(element => !watchedEpisodeIds.includes(element['id']))
-    unwatchedEpisodes.forEach(async episode =>  {
-      const userId = parseInt(localStorage.getItem('id'))
-      const tvId = showId
-      const tvName = this.props.shows.showInfo.name
-      const image = this.props.shows.showInfo.image.medium
-      const epId = episode.id
-      const seasonNo = episode.season
-      const epNo = episode.number
-      const epName = episode.name
-      await this.props.addEpisode(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
-      this.addToWatchedIds(episode.id)
+    const reducedUnwatchedEpisodes = unwatchedEpisodes.map(element =>{
+      const newElement = {}
+      newElement['user_id'] = userId
+      newElement['tv_id'] = tvId
+      newElement['tv_name'] = this.props.shows.showInfo.name
+      newElement['image'] = this.props.shows.showInfo.image.medium
+      newElement['ep_id'] = element.id
+      newElement['season_no'] = element.season
+      newElement['ep_no'] = element.number
+      newElement['ep_name'] = element.name
+      newElement['watched'] = true
+      return newElement
     })
+
+    await this.props.addMultipleEpisodes(userId, tvId, reducedUnwatchedEpisodes)
+
     this.setState({
       checkedAllSeries: true,
     })
@@ -160,7 +187,8 @@ function mapDispatchToProps(dispatch){
     deleteWatchedShow: bindActionCreators(deleteWatchedShow, dispatch),
     changeFavoriteShow: bindActionCreators(changeFavoriteShow, dispatch),
     getAllEpisodes: bindActionCreators(getAllEpisodes, dispatch),
-    addEpisode: bindActionCreators(addEpisode, dispatch)
+    addEpisode: bindActionCreators(addEpisode, dispatch),
+    addMultipleEpisodes: bindActionCreators(addMultipleEpisodes, dispatch)
   }
 }
 

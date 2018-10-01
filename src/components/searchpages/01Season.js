@@ -5,7 +5,7 @@ import {
   ListGroup
 } from 'reactstrap'
 import { connect } from 'react-redux'
-import { addEpisode } from '../../actions/userEpisodesWatched'
+import { addEpisode, addMultipleEpisodes } from '../../actions/userEpisodesWatched'
 import { bindActionCreators } from 'redux'
 
 class Season extends Component {
@@ -17,20 +17,29 @@ class Season extends Component {
     }
   }
 
-  checkedAllEpisodes = () =>{
+  checkedAllEpisodes = async () =>{
     const unwatchedEpisodes = this.props.season.filter(element => !this.props.watchedShowIds.includes(element['id']))
-    unwatchedEpisodes.forEach(async episode =>  {
-      const userId = parseInt(localStorage.getItem('id'))
-      const tvId = this.props.showId
-      const tvName = this.props.name
-      const image = this.props.image
+    unwatchedEpisodes.forEach(episode =>  {
       const epId = episode.id
-      const seasonNo = episode.season
-      const epNo = episode.number
-      const epName = episode.name
-      await this.props.addEpisode(userId, tvId, tvName, image, epId, seasonNo, epNo, epName)
       this.props.addToWatchedIds(epId)
     })
+    const userId = parseInt(localStorage.getItem('id'))
+    const tvId = this.props.showId
+    const reducedUnwatchedEpisodes = unwatchedEpisodes.map(element =>{
+      const newElement = {}
+      newElement['user_id'] = userId
+      newElement['tv_id'] = tvId
+      newElement['tv_name'] = this.props.name
+      newElement['image'] = this.props.image
+      newElement['ep_id'] = element.id
+      newElement['season_no'] = element.season
+      newElement['ep_no'] = element.number
+      newElement['ep_name'] = element.name
+      newElement['watched'] = true
+      return newElement
+    })
+    
+    await this.props.addMultipleEpisodes(userId, tvId, reducedUnwatchedEpisodes)
     this.setState({
       checkedAll: true
     })
@@ -57,7 +66,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
   return{
-    addEpisode: bindActionCreators(addEpisode, dispatch)
+    addEpisode: bindActionCreators(addEpisode, dispatch),
+    addMultipleEpisodes: bindActionCreators(addMultipleEpisodes, dispatch)
   }
 }
 

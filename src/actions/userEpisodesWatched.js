@@ -1,8 +1,9 @@
-import {getEpisodes, addEpisodeToDatabase, addCommentToDatabase, addRatingToDatabase} from '../models/userEpisodesWatched'
+import {getEpisodes, addEpisodeToDatabase, addCommentToDatabase, addMultipleEpisodeToDatabase, addRatingToDatabase} from '../models/userEpisodesWatched'
 export const GET_EPISODES = 'GET_EPISODES'
 export const ADD_EPISODE = 'ADD_EPISODE'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const ADD_RATING = 'ADD_RATING'
+export const ADD_MULTIPLE_EPISODES = 'ADD_MULTIPLE_EPISODES'
 
 export const getAllEpisodes = (userid, tvId) =>{
   return async (dispatch) => {
@@ -28,6 +29,22 @@ export const addEpisode = (userId, tvId, tvName, image, epId, seasonNo, epNo, ep
     }
     dispatch({
       type: ADD_EPISODE,
+      payload: epInfo
+    })
+  }
+}
+
+export const addMultipleEpisodes = (userId, tvId, episodeArray) =>{
+  return async (dispatch) => {
+
+    let response = await addMultipleEpisodeToDatabase(userId, tvId, episodeArray)
+
+    const epInfo = {
+      episodeInfo: response,
+      episodeIds: response.filter(element => element.watched === true).map(element => element['ep_id'])
+    }
+    dispatch({
+      type: ADD_MULTIPLE_EPISODES,
       payload: epInfo
     })
   }
