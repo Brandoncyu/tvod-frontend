@@ -36,14 +36,14 @@ export const userLogin = ({username, password}, history) =>{
   }
 }
 
-export const registerUser = ({ firstname, lastname, email, username, password, aboutme, values }) =>{
+export const registerUser = ({ firstname, lastname, email, image, username, password, aboutme, values }) =>{
   return async (dispatch) => {
     try {
       dispatch({type: USER_SIGNUP_PENDING})
       let response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/signup`,{
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ firstname, lastname, email, username, password, aboutme, values })
+        body: JSON.stringify({ firstname, lastname, email, image, username, password, aboutme, values })
       })
       console.log(response)
       if (response.status !== 201) throw new Error ('Login Failed')
