@@ -32,7 +32,11 @@ class searchPage extends Component {
     let tvId = await getTvId(this.props.match.params.name)
     await this.props.checkIfWatched(userid, tvId)
     await this.props.getAllEpisodes(userid, tvId)
-    let watchedShowIds = this.props.watchedInfo.episodes.map(element=>element['ep_id'])
+    let watchedShowIds = []
+    if (this.props.watchedInfo.episodes !== undefined) {
+      watchedShowIds = this.props.watchedInfo.episodes.map(element=>element['ep_id'])
+    }
+
     this.setState({
       watchedShowIds: watchedShowIds
     })

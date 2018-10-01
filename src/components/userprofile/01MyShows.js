@@ -3,7 +3,8 @@ import {
   Container,
   Row,
   Col,
-  CardDeck
+  CardDeck,
+  CardGroup
 } from 'reactstrap'
 import {shuffle} from './01MyShows/shuffle'
 import ShowCards from './01MyShows/ShowCards'
@@ -20,21 +21,21 @@ const MyShows = (props) => {
       <Row>
         <Col>
           <h1 className="text-center">My Favorite Shows</h1>
-          <CardDeck className="show-deck">
+          <div className="d-flex justify-content-start card-wrapper">
             {favorite.map((element, index) =>{
               return <ShowCards showInfo={element} key={index}/>
             })}
-          </CardDeck>
+          </div>
         </Col>
       </Row>
       <Row>
         <Col>
           <h1 className="text-center">Other Shows Ive Watched</h1>
-          <CardDeck className="show-deck">
+          <div className="d-flex justify-content-start card-wrapper">
             {nonFavorite.map((element, index) =>{
               return <ShowCards showInfo={element} key={index}/>
             })}
-          </CardDeck>
+          </div>
         </Col>
       </Row>
     </Container>

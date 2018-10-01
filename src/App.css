@@ -41,6 +41,15 @@
 }
 
 .showCards {
-  min-height: 355px;
+  min-height: 450px;
   min-width: 250px
+}
+
+.card-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 450px;
+  .card {
+    display: inline-block;
+  }
 }
