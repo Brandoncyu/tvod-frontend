@@ -16,6 +16,7 @@ class UserProfile extends Component {
 
   componentDidMount(){
     this.addSeriesInfo()
+    window.scrollTo(0, 0)
   }
 
   addSeriesInfo = async() => {

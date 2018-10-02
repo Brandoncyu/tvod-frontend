@@ -7,6 +7,7 @@ import UserProfile from './components/UserProfile'
 import ShowSelect from './components/ShowSelect'
 import SearchPage from './components/SearchPage'
 import FollowUsers from './components/FollowUsers'
+import FollowUsersPage from './components/FollowUsersPage'
 import './App.css';
 import { setUser } from './actions/auth.actions'
 import { connect } from 'react-redux'
@@ -39,6 +40,9 @@ class App extends Component {
         }} />
         <AuthenticateRoute exact path="/following" render={()=>{
           return <FollowUsers />
+        }} />
+        <AuthenticateRoute exact path="/following/:name" render={(props)=>{
+          return <FollowUsersPage {...props}/>
         }} />
         <Route exact path="/register" render={(locationProps)=>{
           if (this.props.isLoggedIn) return <Redirect to={ locationProps.location.state ? locationProps.location.state.from.pathname : "/" } />

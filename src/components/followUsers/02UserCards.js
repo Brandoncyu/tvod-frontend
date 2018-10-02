@@ -38,6 +38,7 @@ class UserCards extends Component{
     } else if (favoriteShowsArray.length > 2){
       favoriteShows += favoriteShowsArray[0] + ', ' + favoriteShowsArray[1] + ', ' + favoriteShowsArray[2]
     }
+    const userLink = '/following/' + userInfo.username
 
     return (
       <Card className="userCards" >
@@ -52,10 +53,10 @@ class UserCards extends Component{
           </Row>
           <br />
           <CardText>"{userInfo.aboutme}"</CardText>
-          
           <CardText>Favorite Shows: {favoriteShows}</CardText>
         </CardBody>
         <CardImg top width="100%" src={userInfo.image} alt="Card image cap" />
+        <Button className="btn-lg btn-block" tag={Link} to={userLink} color="primary">Go To Profile!</Button>
       </Card>
     )
   }

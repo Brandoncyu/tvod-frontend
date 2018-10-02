@@ -20,6 +20,7 @@ class ShowSelect extends Component {
 
   componentDidMount() {
     this.props.clearSearch()
+    window.scrollTo(0, 0)
   }
 
   searchShows = async (search) =>{

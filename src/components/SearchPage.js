@@ -23,6 +23,7 @@ class searchPage extends Component {
 
   componentDidMount() {
     this.getShowandUserInfo()
+    window.scrollTo(0, 0)
   }
 
 

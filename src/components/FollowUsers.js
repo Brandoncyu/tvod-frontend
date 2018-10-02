@@ -18,6 +18,7 @@ class FollowUsers extends Component {
 
   componentDidMount() {
     this.getUsers()
+    window.scrollTo(0, 0)
   }
 
   getUsers = async () =>{
