@@ -4,7 +4,7 @@ import {
   Row,
   Col
 } from 'reactstrap'
-import {shuffle} from './01MyShows/shuffle'
+import {shuffle} from '../_shuffle'
 import ShowCards from './01MyShows/ShowCards'
 import { connect } from 'react-redux'
 
