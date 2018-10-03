@@ -40,7 +40,7 @@ class Episode extends Component {
   }
 
   addEpisodeAction = async() => {
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const tvId = this.props.showId
     const tvName = this.props.name
     const image = this.props.image
@@ -56,7 +56,7 @@ class Episode extends Component {
   }
 
   addRatingAction = async (rating) => {
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const tvId = this.props.showId
     const epId = this.props.episodeInfo.id
     this.setState({ rating });
@@ -65,7 +65,7 @@ class Episode extends Component {
 
   addCommentAction = async(event) => {
     event.preventDefault()
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const tvId = this.props.showId
     const epId = this.props.episodeInfo.id
     await this.props.addComment(userId, tvId, epId, this.state.comments)

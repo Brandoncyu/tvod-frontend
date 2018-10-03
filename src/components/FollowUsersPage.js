@@ -31,7 +31,7 @@ class FollowUsersPage extends Component {
   }
 
   addToFollow = async () =>{
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const followId = this.props.userPage.id
     await addFollow(userId, followId)
     this.setState({
@@ -57,7 +57,7 @@ class FollowUsersPage extends Component {
         <Container>
           <Row>
             <Col md="3">
-              <img height="200" width="200" src={this.props.userPage.image} />
+              <img height="200" width="200" src={this.props.userPage.image} alt="user card" />
             </Col>
             <Col>
               <h1>{this.props.userPage.username}</h1>

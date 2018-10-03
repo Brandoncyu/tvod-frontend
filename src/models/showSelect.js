@@ -13,7 +13,7 @@ export const searchOne = async (title) => {
 
 export const searchOneByNumber = async (id) => {
   const response = await axios.get(`${TV_URL}/shows/${id}/episodes`)
-  return response.data.length
+  return response.data
 }
 
 export const searchOneWithEpisodes = async (title) => {

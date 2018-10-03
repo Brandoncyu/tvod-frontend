@@ -23,7 +23,7 @@ class Season extends Component {
       const epId = episode.id
       this.props.addToWatchedIds(epId)
     })
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const tvId = this.props.showId
     const reducedUnwatchedEpisodes = unwatchedEpisodes.map(element =>{
       const newElement = {}
@@ -38,7 +38,7 @@ class Season extends Component {
       newElement['watched'] = true
       return newElement
     })
-    
+
     await this.props.addMultipleEpisodes(userId, tvId, reducedUnwatchedEpisodes)
     this.setState({
       checkedAll: true

@@ -4,7 +4,6 @@ import MyShows from './userprofile/01MyShows'
 import Upcoming from './userprofile/02Upcoming'
 import Newest from './userprofile/03Newest'
 import FriendsSaying from './userprofile/04FriendsSaying'
-import Suggestions from './userprofile/05Suggestions'
 import { getAllSeries } from '../actions/userAllSeries'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -20,7 +19,7 @@ class UserProfile extends Component {
   }
 
   addSeriesInfo = async() => {
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     await this.props.getAllSeries(userId)
   }
 
@@ -32,7 +31,6 @@ class UserProfile extends Component {
         <FriendsSaying />
         <Upcoming />
         <Newest />
-        <Suggestions />
       </div>
     )
   }

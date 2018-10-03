@@ -22,7 +22,7 @@ class FollowUsers extends Component {
   }
 
   getUsers = async () =>{
-    const userid = parseInt(localStorage.getItem('id'))
+    const userid = Number(localStorage.getItem('id'))
     await this.props.getAllUsers(userid)
   }
 

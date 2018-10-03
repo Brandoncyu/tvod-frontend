@@ -17,20 +17,20 @@ const FriendsListItem = (props) => {
 
   if (bothNull){
     return (
-      <ListGroupItem>{' '}<img src={userInfo.image} height="40" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" />}{' '}
+      <ListGroupItem>{' '}<img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
         <a href={userURL}>{userInfo['username']}</a> watched <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>
       </ListGroupItem>
     )
   } else if (ratingTrue){
-    return (<ListGroupItem>{' '}<img src={userInfo.image} height="40" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" />}{' '}
+    return (<ListGroupItem>{' '}<img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
       <a href={userURL}>{userInfo['username']}</a> gave a rating of {episodeInfo.rating} for <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>
     </ListGroupItem>)
   } else if (commentTrue){
-    return (<ListGroupItem><img src={userInfo.image} height="40" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" />}{' '}
+    return (<ListGroupItem><img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
       <a href={userURL}>{userInfo['username']}</a> commented on <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>: "{episodeInfo.comments}"
     </ListGroupItem>)
   } else if(bothTrue) {
-    return (<ListGroupItem><img src={userInfo.image} height="40" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" />}{' '}
+    return (<ListGroupItem><img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
       <a href={userURL}>{userInfo['username']}</a> gave a rating of {episodeInfo.rating} for <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>: "{episodeInfo.comments}"
     </ListGroupItem>)
   }

@@ -33,7 +33,7 @@ class Register extends Component {
     let { firstname, lastname, email, image, username, password, aboutme } = this.state
     var options = Array.from(event.target['register-select'].options)
     let values = options.filter(option => option.selected)
-      .map(option => parseInt(option.value))
+      .map(option => Number(option.value))
 
     await this.props.registerUser({ firstname, lastname, email, image, username, password, aboutme, values })
 

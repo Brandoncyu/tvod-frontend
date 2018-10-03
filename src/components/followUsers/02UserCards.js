@@ -16,7 +16,7 @@ class UserCards extends Component{
   }
 
   addToFollow = async () =>{
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const followId = this.props.userInfo.id
     await addFollow(userId, followId)
     this.setState({

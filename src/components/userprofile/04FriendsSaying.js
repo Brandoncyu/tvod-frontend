@@ -21,7 +21,7 @@ class FriendsSaying extends Component {
   }
 
   getAllFollowers = async () =>{
-    const userid = parseInt(localStorage.getItem('id'))
+    const userid = Number(localStorage.getItem('id'))
     await this.props.getFollowers(userid)
   }
 
@@ -30,7 +30,7 @@ class FriendsSaying extends Component {
     if(this.props.friends){
       friends = shuffle(this.props.friends)
     }
-    
+
     return (
       <Container>
         <Row>

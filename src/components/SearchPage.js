@@ -28,7 +28,7 @@ class searchPage extends Component {
 
 
   getShowandUserInfo = async () => {
-    const userid = parseInt(localStorage.getItem('id'))
+    const userid = Number(localStorage.getItem('id'))
     await this.props.searchShowsWithEpisodes(this.props.match.params.name, userid)
     let tvId = await getTvId(this.props.match.params.name)
     await this.props.checkIfWatched(userid, tvId)
@@ -44,7 +44,7 @@ class searchPage extends Component {
   }
 
   addWatched = async() =>{
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const tvId = this.props.shows.showInfo.id
     const tvName = this.props.shows.showInfo.name
     const image = this.props.shows.showInfo.image.medium
@@ -77,7 +77,7 @@ class searchPage extends Component {
     const watchedEpisodeIds = this.state.watchedShowIds
     const airedEpisodes = this.props.shows.airedEpisodes
     const tvId = this.props.shows.showInfo.id
-    const userId = parseInt(localStorage.getItem('id'))
+    const userId = Number(localStorage.getItem('id'))
     const unwatchedEpisodes = airedEpisodes.filter(element => !watchedEpisodeIds.includes(element['id']))
     const reducedUnwatchedEpisodes = unwatchedEpisodes.map(element =>{
       const newElement = {}
