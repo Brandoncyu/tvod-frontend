@@ -14,16 +14,18 @@ export const getAll = async (userid) =>{
   const promiseData = response.data.data.map(async element => {
     let tvId = element['tv_id']
     let episodes = await searchOneByNumber(tvId)
-    element.episode_count = episodes.length
-    episodes.forEach(async episode => {
-      if (thisWeeksDates(episode.airstamp)) element.episode_upcoming = episode
+
+    let newEpisodes = episodes.map(async episode => {
+      if (thisWeeksDates(episode.airstamp)) element.upcoming = episode
       if (lastWeeksDates(episode.airstamp)) {
         const response = await checkIfWatched(userid, episode.id)
-        response.length > 0 ? episode.watched = true : episode.watched = false
+        response.length > 0 ? episode.hasWatched = true : episode.hasWatched = false
 
-        element.episode_last = episode
+        element.last = episode
       }
     })
+    newEpisodes = await Promise.all(newEpisodes)
+    element.episode_count = newEpisodes.length
     return element
   })
   const data = await Promise.all(promiseData)

@@ -10,7 +10,6 @@ import {shuffle} from '../_shuffle'
 import { connect } from 'react-redux'
 import { getFollowers } from '../../actions/friendsSaying'
 import { bindActionCreators } from 'redux'
-import {date_sort_asc} from '../_sortDate'
 
 
 class FriendsSaying extends Component {

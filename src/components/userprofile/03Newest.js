@@ -2,20 +2,29 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col
+  Col,
+  ListGroup
 } from 'reactstrap'
 import {date_sort_asc_episode_last} from '../_sortDate'
+import NewShowItems from './03NewestShows/NewShowItems'
 import { connect } from 'react-redux'
 
 const Newest = (props) => {
-  const newestEpisodes = props.allSeries.filter(element => element['episode_last'] && element.watched === true)
-  const newestEpisodesSorted = newestEpisodes.sort(date_sort_asc_episode_last)
+  const newestEpisodes = props.allSeries.filter(element =>
+    element.last && element.watched === true)
+  newestEpisodes.sort(date_sort_asc_episode_last)
+
   return (
     <Container>
       <Row>
         <Col>
           <h1 className="text-center">Have You Seen The Newest Episodes?</h1>
         </Col>
+      </Row>
+      <Row>
+        <ListGroup>
+          {newestEpisodes.map((element, index) => <NewShowItems key={index} showInfo={element} episodeInfo={element.last} />)}
+        </ListGroup>
       </Row>
     </Container>
   )
