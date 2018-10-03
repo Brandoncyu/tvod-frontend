@@ -4,8 +4,12 @@ import {
   Row,
   Col
 } from 'reactstrap'
+import {date_sort_asc_episode_last} from '../_sortDate'
+import { connect } from 'react-redux'
 
-const Newest = () => {
+const Newest = (props) => {
+  const newestEpisodes = props.allSeries.filter(element => element['episode_last'] && element.watched === true)
+  const newestEpisodesSorted = newestEpisodes.sort(date_sort_asc_episode_last)
   return (
     <Container>
       <Row>
@@ -17,4 +21,10 @@ const Newest = () => {
   )
 }
 
-export default Newest
+function mapStateToProps(state) {
+  return {
+    allSeries: state.allSeries.allSeries
+  }
+}
+
+export default connect(mapStateToProps)(Newest)

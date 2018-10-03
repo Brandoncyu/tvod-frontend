@@ -10,7 +10,8 @@ export const getUser = async (username, userid) => {
   })
     let data = response.data.data
     const promiseData = data.series.map(async element => {
-      element.episode_count = await searchOneByNumber(element['tv_id'])
+      const episodes = await searchOneByNumber(element['tv_id'])
+      element.episode_count = episodes.length
       return element})
     data.series = await Promise.all(promiseData)
 

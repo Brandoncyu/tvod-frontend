@@ -5,6 +5,7 @@ import {
 
 const ShowCards = (props) => {
   const showInfo = props.showInfo
+  console.log(showInfo)
 
   const watchedPercentage = Number((showInfo['episodes_watched'] / showInfo['episode_count']) * 100)
   return (

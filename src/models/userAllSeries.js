@@ -15,9 +15,14 @@ export const getAll = async (userid) =>{
     let tvId = element['tv_id']
     let episodes = await searchOneByNumber(tvId)
     element.episode_count = episodes.length
-    episodes.forEach(episode => {
-      if (thisWeeksDates(episode.airdate)) element.episode_upcoming = episode
-      if (lastWeeksDates(episode.airdate)) element.episode_last = episode
+    episodes.forEach(async episode => {
+      if (thisWeeksDates(episode.airstamp)) element.episode_upcoming = episode
+      if (lastWeeksDates(episode.airstamp)) {
+        const response = await checkIfWatched(userid, episode.id)
+        response.length > 0 ? episode.watched = true : episode.watched = false
+
+        element.episode_last = episode
+      }
     })
     return element
   })
@@ -40,8 +45,17 @@ function lastWeeksDates(day){
   lastWeek.setDate(lastWeek.getDate() - 7)
 
   const yesterday = new Date(Date.now())
-  yesterday.setDate(yesterday.getDate() - 1)
+
 
   const range = moment.range(lastWeek, yesterday)
   return range.contains(newDay)
+}
+
+async function checkIfWatched(userid, episodeId){
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userid}/episodes/${episodeId}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  return response.data.data
 }
