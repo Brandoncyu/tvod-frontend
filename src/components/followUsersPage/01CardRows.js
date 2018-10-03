@@ -1,17 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
-import { bindActionCreators } from 'redux'
-import { shuffle } from '../_shuffle'
-import { getUserData } from '../../actions/followUsersPage'
+import { withRouter } from 'react-router-dom'
 import ShowCards from './02ShowCards'
 import {
-  Container, Row, Col, CardColumns
+  Container, Row, Col
 } from 'reactstrap';
 
 
 
-const cardRows = (props) =>  {
+const CardRows = (props) =>  {
   const series = props.userPage.series
   let favorite = []
   let nonFavorite = []
@@ -19,12 +16,11 @@ const cardRows = (props) =>  {
     favorite = series.filter(element => element['favorite'] === true)
     nonFavorite = series.filter(element => element['favorite'] !== true)
   }
-  console.log(favorite,nonFavorite)
   return (
       <Container className="my-4">
         <Row>
           <Col>
-            <h1 className="text-center">{props.userPage.username}'s favorites</h1>
+            {props.userPage.username && <h1 className="text-center">{props.userPage.username}'s favorites</h1>}
           </Col>
         </Row>
         <Row>
@@ -37,7 +33,7 @@ const cardRows = (props) =>  {
         <br />
         <Row>
           <Col>
-            <h1 className="text-center">{props.userPage.username}'s other shows</h1>
+            {props.userPage.username && <h1 className="text-center">{props.userPage.username}'s other shows</h1>}
           </Col>
         </Row>
         <Row>
@@ -57,10 +53,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    getUserData: bindActionCreators(getUserData, dispatch)
-  }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(cardRows))
+export default withRouter(connect(mapStateToProps)(CardRows))

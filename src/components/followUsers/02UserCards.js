@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Card, Button, CardTitle, CardText, CardImg, CardBody, CardSubtitle, CardImgOverlay, Row, Col
+  Card, Button, CardTitle, CardText, CardImg, CardBody, Row, Col
 } from 'reactstrap'
 import { addFollow } from '../../models/followUsers'
 import { Link } from 'react-router-dom'

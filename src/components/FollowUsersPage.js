@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
-import { shuffle } from './_shuffle'
+import { addFollow } from '../models/followUsers'
 import { getUserData } from '../actions/followUsersPage'
 import CardRows from './followUsersPage/01CardRows'
+import ActivityList from './followUsersPage/03ActivityList'
 import {
-  Container, Row, Col, CardColumns
+  Container, Row, Col, Button
 } from 'reactstrap';
 
 
@@ -15,6 +16,10 @@ import {
 class FollowUsersPage extends Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      following: false,
+    }
   }
 
   async componentDidMount() {
@@ -25,6 +30,15 @@ class FollowUsersPage extends Component {
     window.scrollTo(0, 0)
   }
 
+  addToFollow = async () =>{
+    const userId = parseInt(localStorage.getItem('id'))
+    const followId = this.props.userPage.id
+    await addFollow(userId, followId)
+    this.setState({
+      following: true
+    })
+  }
+
   findUser = async () =>{
     const userName = this.props.match.params.name
     const id = localStorage.getItem('id')
@@ -32,6 +46,11 @@ class FollowUsersPage extends Component {
   }
 
   render(){
+    const userInfo = this.props.userPage
+    let renderButton = false
+    if (userInfo){
+      renderButton = userInfo.following || this.state.following
+    }
     return (
       <div>
         <Header />
@@ -41,14 +60,15 @@ class FollowUsersPage extends Component {
               <img height="200" width="200" src={this.props.userPage.image} />
             </Col>
             <Col>
-              <br />
               <h1>{this.props.userPage.username}</h1>
+              {renderButton ? <h4>✓ following</h4> : <div><Button onClick={this.addToFollow} size="md" color="info" >+ follow</Button><br /></div>}
               <br />
               <p>Name: {this.props.userPage.firstname} {this.props.userPage.lastname}</p>
               <p>{this.props.userPage.aboutme}</p>
             </Col>
           </Row>
         </Container>
+        <ActivityList />
         <CardRows />
       </div>
     )

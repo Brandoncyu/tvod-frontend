@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { shuffle } from './_shuffle'
 import {
-  CardColumns, Container, Row
+  CardColumns, Container
 } from 'reactstrap'
 
 
