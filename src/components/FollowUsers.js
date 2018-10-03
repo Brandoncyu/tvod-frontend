@@ -12,10 +12,6 @@ import {
 
 
 class FollowUsers extends Component {
-  constructor(props){
-    super(props)
-  }
-
   componentDidMount() {
     this.getUsers()
     window.scrollTo(0, 0)

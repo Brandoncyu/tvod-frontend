@@ -15,10 +15,6 @@ import { bindActionCreators } from 'redux'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
 class App extends Component {
-  constructor(){
-    super()
-  }
-
   componentDidMount = async() => {
     const response = await auth.verify()
     if (response) {

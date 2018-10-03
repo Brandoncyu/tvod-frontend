@@ -9,10 +9,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class UserProfile extends Component {
-  constructor(props){
-    super(props)
-  }
-
   componentDidMount(){
     this.addSeriesInfo()
     window.scrollTo(0, 0)

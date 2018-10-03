@@ -13,10 +13,6 @@ import { bindActionCreators } from 'redux'
 
 
 class FriendsSaying extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   async componentDidMount(){
     await this.getAllFollowers()
   }

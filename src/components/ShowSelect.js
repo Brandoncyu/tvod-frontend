@@ -14,10 +14,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class ShowSelect extends Component {
-  constructor(props){
-    super(props)
-  }
-
   componentDidMount() {
     this.props.clearSearch()
     window.scrollTo(0, 0)

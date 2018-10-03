@@ -12,9 +12,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class Header extends Component {
-  constructor(props) {
-    super(props)
-  }
   removeToken = (e) => {
     e.preventDefault()
     localStorage.removeItem('token')
