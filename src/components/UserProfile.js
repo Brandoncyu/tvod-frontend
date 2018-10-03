@@ -28,10 +28,10 @@ class UserProfile extends Component {
     return (
       <div>
         <Header />
+        <FriendsSaying />
         <MyShows />
         <Upcoming />
         <Newest />
-        <FriendsSaying />
         <Suggestions />
       </div>
     )

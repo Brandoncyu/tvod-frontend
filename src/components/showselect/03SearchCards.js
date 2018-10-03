@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const searchCards = (props) => {
   const cardInfo = props.cardInfo
-  const newURL = /shows/ + props.cardInfo.name.replace(/ /g, '+')
+  const newURL = '/shows/' + props.cardInfo.name.replace(/ /g, '+')
 
   return (
     <Card className="searchCards" body id={cardInfo.id}>

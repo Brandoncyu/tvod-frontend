@@ -1,20 +1,63 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
   Container,
   Row,
-  Col
+  Col,
+  ListGroup
 } from 'reactstrap'
+import FriendsListItem from './04FriendsSaying/FriendsListItem'
+import {shuffle} from '../_shuffle'
+import { connect } from 'react-redux'
+import { getFollowers } from '../../actions/friendsSaying'
+import { bindActionCreators } from 'redux'
 
-const FriendsSaying = () => {
-  return (
-    <Container>
-      <Row>
-        <Col>
-          <h1 className="text-center">What Are Your Friends Saying?</h1>
-        </Col>
-      </Row>
-    </Container>
-  )
+class FriendsSaying extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  async componentDidMount(){
+    await this.getAllFollowers()
+  }
+
+  getAllFollowers = async () =>{
+    const userid = parseInt(localStorage.getItem('id'))
+    await this.props.getFollowers(userid)
+  }
+
+  render(){
+    let friends = []
+    if(this.props.friends){
+      friends = shuffle(this.props.friends)
+    }
+    
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <h1 className="text-center">What Are Your Friends Saying?</h1>
+          </Col>
+        </Row>
+        <Row>
+          <ListGroup>
+            {friends.map((element,index)=><FriendsListItem key={index} userInfo={element} episodeInfo={element['episode_description']}  />)}
+          </ListGroup>
+        </Row>
+      </Container>
+    )
+  }
 }
 
-export default FriendsSaying
+function mapStateToProps(state) {
+  return {
+    friends: state.friendsSaying.users
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    getFollowers: bindActionCreators(getFollowers, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendsSaying)
