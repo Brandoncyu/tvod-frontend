@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListGroup } from 'reactstrap'
-import UpcomingListItem from './01UpcomingShows/UpcomingListItem'
+import UpcomingListItem from './03UpcomingShows/UpcomingListItem'
 import {date_sort_asc_episode_upcoming} from '../_sortDate'
 import { connect } from 'react-redux'
 

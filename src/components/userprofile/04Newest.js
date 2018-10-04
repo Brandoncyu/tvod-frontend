@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListGroup } from 'reactstrap'
 import {date_sort_asc_episode_last} from '../_sortDate'
-import NewShowItems from './02NewestShows/NewShowItems'
+import NewShowItems from './04NewestShows/NewShowItems'
 import { connect } from 'react-redux'
 
 const Newest = (props) => {

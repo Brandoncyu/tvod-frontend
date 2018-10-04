@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 
 const MyShowsNonFavorites = (props) => {
   const shuffledSeries = shuffle(props.allSeries)
-  const favorite = shuffledSeries.filter(series => series.favorite === true)
   const nonFavorite = shuffledSeries.filter(series => series.favorite !== true)
 
   return (

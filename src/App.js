@@ -4,7 +4,6 @@ import Register from './components/signin/Register'
 import Login from './components/signin/Login'
 import auth from './models/auth'
 import UserProfile from './components/UserProfile'
-import Schedule from './components/Schedule'
 import ShowSelect from './components/ShowSelect'
 import SearchPage from './components/SearchPage'
 import FollowUsers from './components/FollowUsers'
@@ -28,9 +27,6 @@ class App extends Component {
       <Switch>
         <AuthenticateRoute exact path="/" render={()=>{
           return <UserProfile />
-        }} />
-        <AuthenticateRoute exact path="/schedule" render={()=>{
-          return <Schedule />
         }} />
         <AuthenticateRoute exact path="/shows" render={()=>{
           return <ShowSelect />

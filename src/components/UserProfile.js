@@ -3,8 +3,10 @@ import Header from './Header'
 import MyShowsFavorites from './userprofile/00MyShowsFavorites'
 import MyShowsNonFavorites from './userprofile/01MyShowsNonFavorites'
 import FriendsSaying from './userprofile/02FriendsSaying'
+import Upcoming from './userprofile/03Upcoming'
+import Newest from './userprofile/04Newest'
 import {
-  Navbar, NavbarBrand, Nav, NavItem, NavLink, TabPane, TabContent, Container, Row, Col
+  Nav, NavItem, NavLink, TabPane, TabContent, Container, Row, Col
 } from 'reactstrap';
 import { getAllSeries } from '../actions/userAllSeries'
 import { connect } from 'react-redux'
@@ -66,6 +68,22 @@ class UserProfile extends Component {
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggle('3'); }}
             >
+              Just Aired
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '4' })}
+              onClick={() => { this.toggle('4'); }}
+            >
+              Airing This Week
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '5' })}
+              onClick={() => { this.toggle('5'); }}
+            >
               What Are Your Friends Watching?
             </NavLink>
           </NavItem>
@@ -80,16 +98,30 @@ class UserProfile extends Component {
           </TabPane>
           <TabPane tabId="2">
             <Row>
-            <Col sm="12">
-              <MyShowsNonFavorites />
-            </Col>
+              <Col sm="12">
+                <MyShowsNonFavorites />
+              </Col>
             </Row>
           </TabPane>
           <TabPane tabId="3">
             <Row>
-            <Col sm="12">
-              <FriendsSaying />
-            </Col>
+              <Col sm="12">
+                <Newest />
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="4">
+            <Row>
+              <Col sm="12">
+                <Upcoming />
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="5">
+            <Row>
+              <Col sm="12">
+                <FriendsSaying />
+              </Col>
             </Row>
           </TabPane>
         </TabContent>
