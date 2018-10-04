@@ -16,6 +16,7 @@ const CardRows = (props) =>  {
     favorite = series.filter(element => element['favorite'] === true)
     nonFavorite = series.filter(element => element['favorite'] !== true)
   }
+  
   return (
       <Container className="my-4">
         <Row>
@@ -26,7 +27,10 @@ const CardRows = (props) =>  {
         <Row>
           <div className="d-flex justify-content-start card-wrapper">
             { favorite.length > 0 && favorite.map((element, index) =>{
-              return <ShowCards showInfo={element} key={index} />
+              return <ShowCards
+                key={index}
+                showInfo={element}
+              />
             } )}
           </div>
         </Row>
@@ -39,7 +43,10 @@ const CardRows = (props) =>  {
         <Row>
           <div className="d-flex justify-content-start card-wrapper">
             { nonFavorite.length > 0 && nonFavorite.map((element, index) =>{
-              return <ShowCards showInfo={element} key={index} />
+              return <ShowCards
+                key={index}
+                showInfo={element}
+              />
             } )}
           </div>
         </Row>

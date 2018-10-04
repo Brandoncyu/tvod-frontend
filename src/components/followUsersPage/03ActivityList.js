@@ -10,6 +10,7 @@ import {
 const ActivityList = (props) =>  {
   let episodes = []
   if (props.userPage.episodesReviews) episodes = props.userPage.episodesReviews
+
   return (
       <Container className="my-4">
         <Row>
@@ -20,7 +21,10 @@ const ActivityList = (props) =>  {
         <Row>
           <ListGroup>
             {episodes.map((element,index) => {
-              return <ActivityListItem episodeInfo={element} key={index} />
+              return <ActivityListItem
+                key={index}
+                episodeInfo={element} 
+              />
             })}
           </ListGroup>
         </Row>

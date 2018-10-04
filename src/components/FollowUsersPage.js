@@ -61,10 +61,21 @@ class FollowUsersPage extends Component {
             </Col>
             <Col>
               <h1>{this.props.userPage.username}</h1>
-              {renderButton ? <h4>✓ following</h4> : <div><Button onClick={this.addToFollow} size="md" color="info" >+ Follow</Button><br /></div>}
+              {renderButton ?
+                <h4>✓ following</h4> :
+                <div>
+                  <Button onClick={this.addToFollow} size="md" color="info" >
+                    + Follow
+                  </Button>
+                  <br />
+                </div>}
               <br />
-              <p>Name: {this.props.userPage.firstname} {this.props.userPage.lastname}</p>
-              <p>{this.props.userPage.aboutme}</p>
+              <p>
+                Name: {this.props.userPage.firstname} {this.props.userPage.lastname}
+              </p>
+              <p>
+                {this.props.userPage.aboutme}
+              </p>
             </Col>
           </Row>
         </Container>

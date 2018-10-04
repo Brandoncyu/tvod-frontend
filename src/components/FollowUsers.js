@@ -30,7 +30,11 @@ class FollowUsers extends Component {
         <Title />
         <Container>
             <CardColumns>
-              {usersInfo.map((userInfo, index) => <UserCards userInfo={userInfo} key={index} />)}
+              {usersInfo.map((userInfo, index) =>
+                <UserCards
+                  key={index} 
+                  userInfo={userInfo}
+                />)}
             </CardColumns>
         </Container>
       </div>
