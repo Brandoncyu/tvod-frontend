@@ -45,18 +45,27 @@ class UserCards extends Component{
         <CardBody>
           <Row>
             <Col className="d-flex flex-row">
-            <CardTitle>{userInfo.username}</CardTitle>
+              <CardTitle>
+                {userInfo.username}
+              </CardTitle>
             </Col>
             <Col className="d-flex flex-row-reverse">
               {renderButton ? <p>✓ following</p> : <h5><Button onClick={this.addToFollow} size="sm" color="info" >+ follow</Button></h5>}
             </Col>
           </Row>
           <br />
-          <CardText>"{userInfo.aboutme}"</CardText>
+          <CardText>
+            "{userInfo.aboutme}"
+          </CardText>
           <CardText>Favorite Shows: {favoriteShows}</CardText>
         </CardBody>
         <CardImg top width="100%" src={userInfo.image} alt="Card image cap" />
-        <Button className="btn-lg btn-block" tag={Link} to={userLink} color="primary">Go To Profile!</Button>
+        <Button
+        className="btn-lg btn-block"
+        tag={Link} to={userLink}
+        color="primary">
+          Go To Profile!
+        </Button>
       </Card>
     )
   }
