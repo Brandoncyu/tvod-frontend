@@ -66,10 +66,10 @@ class NewShowItems extends Component {
 
     return (
       <ListGroupItem>
-        {abstraction ? <h5>✓ Watched!</h5> : <h5><Button size="sm" color="info" onClick={this.addEpisodeAction} >+ Add To Watched!</Button></h5>}
         <Row>
-          <Col sm="1">
-            <img src={showInfo.image} height="100" alt="show card" />
+          <Col sm="2">
+            {abstraction ? <h5>✓ Watched!</h5> : <h5><Button size="sm" color="info" onClick={this.addEpisodeAction} >+ Add To Watched!</Button></h5>}
+            <img src={showInfo.image} height="200" alt="show card" />
           </Col>
           <Col>
             <h4>

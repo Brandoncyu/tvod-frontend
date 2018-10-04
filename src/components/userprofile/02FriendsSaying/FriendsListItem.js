@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  ListGroupItem
+  ListGroupItem, Row, Col
 } from 'reactstrap'
 
 const FriendsListItem = (props) => {
@@ -10,30 +10,32 @@ const FriendsListItem = (props) => {
   const userURL = '/following/' + userInfo['username']
 
 
-  const bothTrue = episodeInfo.rating !== null && episodeInfo.comments !== null
-  const ratingTrue = episodeInfo.rating !== null && episodeInfo.comments === null
-  const commentTrue = episodeInfo.rating === null && episodeInfo.comments !== null
-  const bothNull = episodeInfo.rating === null && episodeInfo.comments === null
-
-  if (bothNull){
-    return (
-      <ListGroupItem>{' '}<img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
-        <a href={userURL}>{userInfo['username']}</a> watched <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>
-      </ListGroupItem>
-    )
-  } else if (ratingTrue){
-    return (<ListGroupItem>{' '}<img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
-      <a href={userURL}>{userInfo['username']}</a> gave a rating of {episodeInfo.rating} for <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>
-    </ListGroupItem>)
-  } else if (commentTrue){
-    return (<ListGroupItem><img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
-      <a href={userURL}>{userInfo['username']}</a> commented on <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>: "{episodeInfo.comments}"
-    </ListGroupItem>)
-  } else if(bothTrue) {
-    return (<ListGroupItem><img src={userInfo.image} height="40" alt="user card" />{' '}{episodeInfo.image && <img src={episodeInfo.image} height="40" alt="show card" />}{' '}
-      <a href={userURL}>{userInfo['username']}</a> gave a rating of {episodeInfo.rating} for <a href={showURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>: "{episodeInfo.comments}"
-    </ListGroupItem>)
-  }
+  return (
+    <ListGroupItem>
+      <Row>
+        <Col sm="1" className="mr-4">
+          <img src={userInfo.image} className="rounded-circle" height="100" alt="user card" />{' '}
+        </Col>
+        {episodeInfo.image && <Col sm="1" className="mr-4"><img src={episodeInfo.image} height="100" alt="show card" /></Col>}
+        <Col>
+          <Row>
+            <h4><a href={userURL}>{userInfo['username']}</a> watched <a href={showURL}>{episodeInfo['tv_name']}</a> </h4>
+          </Row>
+          <Row>
+            <p>season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b></p>
+          </Row>
+          {episodeInfo.rating &&
+          <Row>
+            <p>Rated {episodeInfo.rating} out of 5</p>
+          </Row>}
+          {episodeInfo.comments &&
+          <Row>
+            <p>Comments: "{episodeInfo.comments}"</p>
+          </Row>}
+        </Col>
+      </Row>
+    </ListGroupItem>
+  )
 }
 
 export default FriendsListItem

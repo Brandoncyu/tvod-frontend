@@ -56,10 +56,10 @@ class FollowUsersPage extends Component {
         <Header />
         <Container>
           <Row>
-            <Col md="3">
-              <img height="200" width="200" src={this.props.userPage.image} alt="user card" />
+            <Col md="3" className="mr-4">
+              <img height="300" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
             </Col>
-            <Col>
+            <Col className="ml-4">
               <h1>{this.props.userPage.username}</h1>
               {renderButton ?
                 <h4>✓ following</h4> :
@@ -79,7 +79,6 @@ class FollowUsersPage extends Component {
             </Col>
           </Row>
         </Container>
-
         <CardRows />
         <ActivityList />
       </div>

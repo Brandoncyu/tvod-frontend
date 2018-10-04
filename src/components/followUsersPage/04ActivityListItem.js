@@ -1,55 +1,40 @@
 import React from 'react'
 import {
-  ListGroupItem
+  ListGroupItem, Row, Col
 } from 'reactstrap'
+import Moment from 'moment';
 
 const ActivityListItem = (props) => {
   const episodeInfo = props.episodeInfo
+  const showURL = '/shows/' + episodeInfo['tv_name'].replace(/ /g, '+')
+  const when = Moment(episodeInfo['updated_at']).calendar()
 
-  const newURL = '/shows/' + episodeInfo['tv_name'].replace(/ /g, '+')
-  const bothTrue = episodeInfo.rating !== null && episodeInfo.comments !== null
-  const ratingTrue = episodeInfo.rating !== null && episodeInfo.comments === null
-  const commentTrue = episodeInfo.rating === null && episodeInfo.comments !== null
-  const bothNull = episodeInfo.rating === null && episodeInfo.comments === null
-
-  if (bothNull){
-    return (
-      <ListGroupItem>
-        {episodeInfo.image &&
-          <img src={episodeInfo.image} alt="show card" height="40" />}
-        {' '}
-        Watched <a href={newURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>
-      </ListGroupItem>
-    )
-  } else if (ratingTrue){
-    return (
-      <ListGroupItem>
-        {episodeInfo.image &&
-          <img src={episodeInfo.image} alt="show card" height="40" />}
-        {' '}
-        Gave a rating of {episodeInfo.rating} for <a href={newURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>
-      </ListGroupItem>
-    )
-  } else if (commentTrue){
-    return (
-      <ListGroupItem>
-        {episodeInfo.image &&
-          <img src={episodeInfo.image} alt="show card" height="40" />}
-        {' '}
-        Commented on <a href={newURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>: "{episodeInfo.comments}"
-      </ListGroupItem>
-    )
-  } else if (bothTrue) {
-    return (
-      <ListGroupItem>
-        {episodeInfo.image &&
-          <img src={episodeInfo.image} alt="show card" height="40" />}
-          {' '}
-          Gave a rating of {episodeInfo.rating} for <a href={newURL}>{episodeInfo['tv_name']}</a> season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b>:
-          "{episodeInfo.comments}"
-      </ListGroupItem>
-    )
-  }
+  return (
+    <ListGroupItem>
+      <Row>
+        {episodeInfo.image && <Col sm="1" className="mr-2"><img src={episodeInfo.image} height="100" alt="show card" /></Col>}
+        <Col>
+          <Row>
+            <h4>watched <a href={showURL}>{episodeInfo['tv_name']}</a></h4>
+          </Row>
+          <Row>
+            <p>season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b></p>
+          </Row>
+          {episodeInfo.rating &&
+          <Row>
+            <p>Rated {episodeInfo.rating} out of 5</p>
+          </Row>}
+          {episodeInfo.comments &&
+          <Row>
+            <p>Comments: "{episodeInfo.comments}"</p>
+          </Row>}
+          <Row>
+            <small>{when}</small>
+          </Row>
+        </Col>
+      </Row>
+    </ListGroupItem>
+  )
 }
 
 export default ActivityListItem
