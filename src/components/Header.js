@@ -32,6 +32,9 @@ class Header extends Component {
               <NavLink tag={Link} to="/shows">Search Shows</NavLink>
             </NavItem>
             <NavItem>
+              <NavLink tag={Link} to="/schedule">Your Schedule</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink tag={Link} to="/following">Following</NavLink>
             </NavItem>
               <NavLink onClick={this.removeToken}>Logout

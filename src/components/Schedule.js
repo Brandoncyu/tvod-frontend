@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import MyShows from './userprofile/01MyShows'
-import FriendsSaying from './userprofile/02FriendsSaying'
+import Upcoming from './schedule/01Upcoming'
+import Newest from './schedule/02Newest'
 import { getAllSeries } from '../actions/userAllSeries'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-class UserProfile extends Component {
+class Schedule extends Component {
   componentDidMount(){
     this.addSeriesInfo()
     window.scrollTo(0, 0)
@@ -21,8 +21,8 @@ class UserProfile extends Component {
     return (
       <div>
         <Header />
-        <FriendsSaying />
-        <MyShows />
+        <Newest />
+        <Upcoming />
       </div>
     )
   }
@@ -34,4 +34,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(null, mapDispatchToProps)(UserProfile)
+export default connect(null, mapDispatchToProps)(Schedule)

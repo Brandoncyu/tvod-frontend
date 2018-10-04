@@ -5,7 +5,7 @@ import {
   Col,
   ListGroup
 } from 'reactstrap'
-import UpcomingListItem from './02UpcomingShows/UpcomingListItem'
+import UpcomingListItem from './01UpcomingShows/UpcomingListItem'
 import {date_sort_asc_episode_upcoming} from '../_sortDate'
 import { connect } from 'react-redux'
 

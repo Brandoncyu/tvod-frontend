@@ -5,7 +5,7 @@ import {
   Col,
   ListGroup
 } from 'reactstrap'
-import FriendsListItem from './04FriendsSaying/FriendsListItem'
+import FriendsListItem from './02FriendsSaying/FriendsListItem'
 import {shuffle} from '../_shuffle'
 import { connect } from 'react-redux'
 import { getFollowers } from '../../actions/friendsSaying'
