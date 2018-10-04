@@ -19,11 +19,11 @@ const ActivityList = (props) =>  {
           </Col>
         </Row>
         <Row>
-          <ListGroup>
+          <ListGroup className="stretch">
             {episodes.map((element,index) => {
               return <ActivityListItem
                 key={index}
-                episodeInfo={element} 
+                episodeInfo={element}
               />
             })}
           </ListGroup>

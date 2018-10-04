@@ -13,7 +13,7 @@ import { connect } from 'react-redux'
 const Upcoming = (props) => {
   const upcomingSeries = props.allSeries.filter(element => element.upcoming && element.watched === true)
   upcomingSeries.sort(date_sort_asc_episode_upcoming)
-  
+
   return (
     <Container>
       <Row>
@@ -22,7 +22,7 @@ const Upcoming = (props) => {
         </Col>
       </Row>
       <Row>
-        <ListGroup>
+        <ListGroup className="stretch">
           {upcomingSeries.map((element, index) =>
             <UpcomingListItem
               key={index}

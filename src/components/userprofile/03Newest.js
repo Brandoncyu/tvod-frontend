@@ -22,12 +22,12 @@ const Newest = (props) => {
         </Col>
       </Row>
       <Row>
-        <ListGroup>
+        <ListGroup className="stretch">
           {newestEpisodes.map((element, index) =>
             <NewShowItems
               key={index}
               showInfo={element}
-              episodeInfo={element.last} 
+              episodeInfo={element.last}
             />)}
         </ListGroup>
       </Row>

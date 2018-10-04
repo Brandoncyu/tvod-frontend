@@ -36,12 +36,12 @@ class FriendsSaying extends Component {
           </Col>
         </Row>
         <Row>
-          <ListGroup>
+          <ListGroup className="stretch">
             {friends.map((element,index) =>
               <FriendsListItem
                 key={index}
                 userInfo={element}
-                episodeInfo={element['episode_description']}  
+                episodeInfo={element['episode_description']}
               />)}
           </ListGroup>
         </Row>

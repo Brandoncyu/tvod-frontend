@@ -150,7 +150,7 @@ class searchPage extends Component {
         </Row>
         <Row>
           {this.props.watchedInfo.watched === true &&
-            <div className="accordion">
+            <div className="stretch">
               <h3>Which Episodes have you seen?</h3>
               <Accordion>
                 {seasonSorted.map((season, index) => {
@@ -168,7 +168,7 @@ class searchPage extends Component {
                       addToWatchedIds={this.addToWatchedIds}
                       checkedAllSeries={this.state.checkedAllSeries}
                       season={season}
-                      seasonNumber={index+1} 
+                      seasonNumber={index+1}
                     />
                   </div>}
                 )}
