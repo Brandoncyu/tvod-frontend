@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { addFollow } from '../models/followUsers'
 import { getUserData } from '../actions/followUsersPage'
-import CardRows from './followUsersPage/00CardRows'
-import CardRowsFavorites from './followUsersPage/01CardRowsFavorites'
+import CardRows from './followUsersPage/00CardRowsFavorites'
+import CardRowsFavorites from './followUsersPage/01CardRowsNonFavorites'
 import ActivityList from './followUsersPage/03ActivityList'
 import {
   Container, Row, Col, Button, TabContent, TabPane, Nav, NavItem, NavLink
