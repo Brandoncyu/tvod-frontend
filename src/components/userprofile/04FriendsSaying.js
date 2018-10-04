@@ -37,7 +37,12 @@ class FriendsSaying extends Component {
         </Row>
         <Row>
           <ListGroup>
-            {friends.map((element,index)=><FriendsListItem key={index} userInfo={element} episodeInfo={element['episode_description']}  />)}
+            {friends.map((element,index) =>
+              <FriendsListItem
+                key={index}
+                userInfo={element}
+                episodeInfo={element['episode_description']}  
+              />)}
           </ListGroup>
         </Row>
       </Container>

@@ -12,8 +12,12 @@ const ShowCards = (props) => {
   return (
     <Card className="showCards mx-1" tag={Link} to={newURL}>
       { showInfo.image !== null && <CardImg className="mb-4" top width="100%" src={showInfo.image} alt="Card image" /> }
-      <CardTitle className="text-center">{showInfo['tv_name']}</CardTitle>
-      <CardText className="text-center">{showInfo['episodes_watched']} / {showInfo['episode_count']}</CardText>
+      <CardTitle className="text-center">
+        {showInfo['tv_name']}
+      </CardTitle>
+      <CardText className="text-center">
+        {showInfo['episodes_watched']} / {showInfo['episode_count']}
+      </CardText>
       <Progress value={watchedPercentage} />
     </Card>
   )

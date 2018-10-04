@@ -72,10 +72,19 @@ class NewShowItems extends Component {
             <img src={showInfo.image} height="100" alt="show card" />
           </Col>
           <Col>
-            <h4><a href={showURL}>{showInfo['tv_name']}</a></h4>
-            <h5>Season {episodeInfo.season} Episode {episodeInfo.number}: {episodeInfo.name}</h5>
-            <small>Airdate: {airdate}</small><br />
-            <div className="summary" dangerouslySetInnerHTML={ { __html: episodeInfo.summary }}></div>
+            <h4>
+              <a href={showURL}>{showInfo['tv_name']}</a>
+            </h4>
+            <h5>
+              Season {episodeInfo.season} Episode {episodeInfo.number}: {episodeInfo.name}
+            </h5>
+            <small>
+              Airdate: {airdate}
+            </small>
+            <br />
+            <div className="summary"
+              dangerouslySetInnerHTML={ { __html: episodeInfo.summary }}>
+            </div>
           </Col>
         </Row>
         { this.state.selected && <div>
@@ -89,9 +98,17 @@ class NewShowItems extends Component {
             </ButtonGroup>
           <br />
           <Label htmlFor="comment">Comments</Label>
-            <Input type="textarea" name="text" id="comment" value={this.state.comments} onChange={e => this.setState({comments: e.target.value})} />
-          <Button color="info" onClick={this.addCommentAction} size="sm">Submit Comment</Button></div>
-        }
+            <Input
+              type="textarea"
+              name="text"
+              id="comment"
+              value={this.state.comments}
+              onChange={e => this.setState({comments: e.target.value})}
+            />
+          <Button color="info" onClick={this.addCommentAction} size="sm">
+            Submit Comment
+          </Button>
+        </div>}
       </ListGroupItem>
     )
   }

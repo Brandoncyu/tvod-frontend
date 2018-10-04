@@ -21,7 +21,9 @@ const MyShows = (props) => {
           <h1 className="text-center">My Favorite Shows</h1>
           <div className="d-flex justify-content-start card-wrapper">
             {favorite.map((element, index) =>{
-              return <ShowCards showInfo={element} key={index}/>
+              return <ShowCards
+                key={index}
+                showInfo={element} />
             })}
           </div>
         </Col>
@@ -31,7 +33,9 @@ const MyShows = (props) => {
           <h1 className="text-center">Other Shows Ive Watched</h1>
           <div className="d-flex justify-content-start card-wrapper">
             {nonFavorite.map((element, index) =>{
-              return <ShowCards showInfo={element} key={index}/>
+              return <ShowCards
+                key={index}
+                showInfo={element} />
             })}
           </div>
         </Col>

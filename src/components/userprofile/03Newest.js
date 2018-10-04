@@ -23,7 +23,12 @@ const Newest = (props) => {
       </Row>
       <Row>
         <ListGroup>
-          {newestEpisodes.map((element, index) => <NewShowItems key={index} showInfo={element} episodeInfo={element.last} />)}
+          {newestEpisodes.map((element, index) =>
+            <NewShowItems
+              key={index}
+              showInfo={element}
+              episodeInfo={element.last} 
+            />)}
         </ListGroup>
       </Row>
     </Container>

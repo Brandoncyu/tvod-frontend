@@ -18,10 +18,14 @@ const UpcomingListItem = (props) => {
           <img src={showInfo.image} height="100" alt="show card" />
         </Col>
         <Col>
-          <a href={showURL}>{showInfo['tv_name']}</a> airs <b>{airstamp}</b><br />
-          <b>{episodeInfo.name}</b><br />
-          Season {episodeInfo.season}, Episode {episodeInfo.number}<br />
-          <div className="summary" dangerouslySetInnerHTML={ { __html: episodeInfo.summary }}></div>
+          <a href={showURL}>{showInfo['tv_name']}</a> airs <b>{airstamp}</b>
+          <br />
+          <b>{episodeInfo.name}</b>
+          <br />
+          Season {episodeInfo.season}, Episode {episodeInfo.number}
+          <br />
+          <div className="summary" dangerouslySetInnerHTML={ { __html: episodeInfo.summary }}>
+          </div>
         </Col>
       </Row>
     </ListGroupItem>
