@@ -15,7 +15,7 @@ const ActivityList = (props) =>  {
       <Container className="my-4">
         <Row>
           <Col>
-            <h1 className="text-center">Recent Activity</h1>
+            <h2>Recent Activity</h2>
           </Col>
         </Row>
         <Row>

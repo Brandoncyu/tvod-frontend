@@ -79,8 +79,9 @@ class FollowUsersPage extends Component {
             </Col>
           </Row>
         </Container>
-        <ActivityList />
+
         <CardRows />
+        <ActivityList />
       </div>
     )
   }

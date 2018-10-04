@@ -16,12 +16,12 @@ const CardRows = (props) =>  {
     favorite = series.filter(element => element['favorite'] === true)
     nonFavorite = series.filter(element => element['favorite'] !== true)
   }
-  
+
   return (
       <Container className="my-4">
         <Row>
           <Col>
-            {props.userPage.username && <h1 className="text-center">{props.userPage.username}'s favorites</h1>}
+            {props.userPage.username && <h2>{props.userPage.username}'s favorites</h2>}
           </Col>
         </Row>
         <Row>
@@ -37,7 +37,7 @@ const CardRows = (props) =>  {
         <br />
         <Row>
           <Col>
-            {props.userPage.username && <h1 className="text-center">{props.userPage.username}'s other shows</h1>}
+            {props.userPage.username && <h2>{props.userPage.username}'s other shows</h2>}
           </Col>
         </Row>
         <Row>
