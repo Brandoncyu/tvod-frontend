@@ -23,8 +23,7 @@ class AccordionSection extends Component {
       <div
         style={{
           border: '1px solid #008f68',
-          padding: '5px 10px',
-          width: '80vw',
+          padding: '5px 10px'
         }}
       >
         <div onClick={onClick} className="seasonLabels" style={{ cursor: 'pointer' }}>

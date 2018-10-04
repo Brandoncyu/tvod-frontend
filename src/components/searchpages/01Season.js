@@ -49,9 +49,23 @@ class Season extends Component {
   render(){
     return (
       <div>
-        <Button onClick={this.checkedAllEpisodes} color="info" size="sm">+ Watched All</Button><br />
+        <Button onClick={this.checkedAllEpisodes} color="info" size="sm">
+          + Watched All
+        </Button>
+        <br />
         <ListGroup>
-        { this.props.season.map((episodeInfo, index) => {return <Episode key={index} showId={this.props.showId} name={this.props.name} image={this.props.image} checkedAll={this.state.checkedAll} checkedAllSeries={this.props.checkedAllSeries} addToWatchedIds={this.props.addToWatchedIds} episodeInfo={episodeInfo} />}) }
+          { this.props.season.map((episodeInfo, index) => {
+            return <Episode
+              key={index}
+              showId={this.props.showId}
+              name={this.props.name}
+              image={this.props.image}
+              checkedAll={this.state.checkedAll}
+              checkedAllSeries={this.props.checkedAllSeries}
+              addToWatchedIds={this.props.addToWatchedIds}
+              episodeInfo={episodeInfo}
+            />})
+          }
         </ListGroup>
       </div>
     )

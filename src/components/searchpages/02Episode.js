@@ -79,8 +79,16 @@ class Episode extends Component {
     const abstraction = this.checkId || this.state.selected === true || this.props.checkedAll || this.props.checkedAllSeries
     return (
       <ListGroupItem>
-        {abstraction ? <h5>✓{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5> : <h5><Button size="sm" color="info" onClick={this.addEpisodeAction} >+</Button>{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5>}
-      <small>Airdate: {airdate}</small><br />
+        {abstraction ?
+          <h5>✓{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5> :
+          <h5>
+            <Button size="sm" color="info" onClick={this.addEpisodeAction} >+</Button>{' '}
+            Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}
+          </h5>}
+      <small>
+        Airdate: {airdate}
+      </small>
+      <br />
       <div className="summary" dangerouslySetInnerHTML={ { __html: this.props.episodeInfo.summary }}></div>
       { abstraction && <div>
         <Label htmlFor="rating">Episode rating</Label> {' '}
@@ -93,7 +101,13 @@ class Episode extends Component {
           </ButtonGroup>
         <br />
         <Label htmlFor="comment">Comments</Label>
-          <Input type="textarea" name="text" id="comment" value={this.state.comments} onChange={e => this.setState({comments: e.target.value})} />
+          <Input
+            type="textarea"
+            name="text"
+            id="comment"
+            value={this.state.comments}
+            onChange={e => this.setState({comments: e.target.value})}
+          />
         <Button color="info" onClick={this.addCommentAction} size="sm">Submit Comment</Button></div>
       }
       </ListGroupItem>

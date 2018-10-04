@@ -36,7 +36,7 @@ function thisWeeksDates(day){
   let newDay = Moment(day)
   const today = new Date(Date.now())
   const nextWeek = new Date(Date.now())
-  nextWeek.setDate(nextWeek.getDate() + 6);
+  nextWeek.setDate(nextWeek.getDate() + 7);
   const range = moment.range(today, nextWeek)
   return range.contains(newDay)
 }

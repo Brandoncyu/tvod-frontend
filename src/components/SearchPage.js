@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Container, Row, Col, Form, Button
+  Container, Row, Col, Button
 } from 'reactstrap'
 import Header from './Header'
 import Season from './searchpages/01Season'
@@ -123,25 +123,57 @@ class searchPage extends Component {
           </Col>
           <Col>
             <h1 className="mt-4">{this.props.shows.showInfo.name}</h1>
-            { this.props.watchedInfo.watched === false ? <Button onClick={this.addWatched} color="link">+ Add to My Shows</Button> : <Button onClick={this.deleteWatched} color="link">- Remove From My Shows</Button> }
-            { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === false) && <Button onClick={this.changeFavorite} color="link">☆ Add to My Favorite Shows</Button> }
-            { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === true) && <Button onClick={this.changeFavorite} color="link">★ Remove from My Favorite Shows</Button> }
+            { this.props.watchedInfo.watched === false ?
+              <Button onClick={this.addWatched} color="link">
+                + Add to My Shows
+              </Button> :
+              <Button onClick={this.deleteWatched} color="link">
+                - Remove From My Shows
+              </Button> }
+            { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === false) &&
+              <Button onClick={this.changeFavorite} color="link">
+                ☆ Add to My Favorite Shows
+              </Button> }
+            { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === true) &&
+              <Button onClick={this.changeFavorite} color="link">
+                ★ Remove from My Favorite Shows
+              </Button> }
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.props.shows.showInfo.summary }}></p>
             <p><b>Genres</b>: {this.props.shows.showInfo.genres.join(', ')}</p>
             <p><b>Episodes Aired</b>: {this.props.shows.airedEpisodes.length}</p>
-            {this.props.watchedInfo.watched === true && <Button onClick={this.checkedAllEpisodes} color="primary" size="md">+ I have watched the whole series</Button>}
+            {this.props.watchedInfo.watched === true &&
+              <Button color="primary" size="md"
+              onClick={this.checkedAllEpisodes} >
+                + I have watched the whole series
+              </Button>}
           </Col>
         </Row>
         <Row>
-          {this.props.watchedInfo.watched === true &&<div> <h3>Which Episodes have you seen?</h3>
-          <Form>
-            <Accordion>
-              {seasonSorted.map((season, index) => {
-                const seasonName = `Season ${index + 1}`
-                return <div className="seasonLabels" label={seasonName} key={index}><Season addEpisodeToDatabase={this.addEpisodeToDatabase} showId={this.props.shows.showInfo.id} name={this.props.shows.showInfo.name} image={this.props.shows.showInfo.image.medium} watchedShowIds={this.state.watchedShowIds} addToWatchedIds={this.addToWatchedIds} checkedAllSeries={this.state.checkedAllSeries} key={index} season={season} seasonNumber={index+1} /></div>}
-              )}
-            </Accordion>
-          </Form></div>}
+          {this.props.watchedInfo.watched === true &&
+            <div className="accordion">
+              <h3>Which Episodes have you seen?</h3>
+              <Accordion>
+                {seasonSorted.map((season, index) => {
+                  const seasonName = `Season ${index + 1}`
+                  return <div className="seasonLabels"
+                  label={seasonName}
+                  key={index}>
+                    <Season
+                      key={index}
+                      addEpisodeToDatabase={this.addEpisodeToDatabase}
+                      showId={this.props.shows.showInfo.id}
+                      name={this.props.shows.showInfo.name}
+                      image={this.props.shows.showInfo.image.medium}
+                      watchedShowIds={this.state.watchedShowIds}
+                      addToWatchedIds={this.addToWatchedIds}
+                      checkedAllSeries={this.state.checkedAllSeries}
+                      season={season}
+                      seasonNumber={index+1} 
+                    />
+                  </div>}
+                )}
+              </Accordion>
+          </div>}
         </Row>
       </Container>
       </div>

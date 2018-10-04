@@ -53,3 +53,7 @@
     display: inline-block;
   }
 }
+
+.accordion {
+  width: 100%;
+}

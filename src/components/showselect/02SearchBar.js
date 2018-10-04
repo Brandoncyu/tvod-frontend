@@ -28,7 +28,11 @@ class SearchBar extends Component {
     return (
       <InputGroup size="lg">
         <Input type="search" name="search" id="search" placeholder="Search for what you've been watching here!" onChange={this.onChange} />
-        <InputGroupAddon onClick={this.searchShows} addonType="append"><Button color="secondary">Search</Button></InputGroupAddon>
+        <InputGroupAddon onClick={this.searchShows} addonType="append">
+          <Button color="secondary">
+            Search
+          </Button>
+        </InputGroupAddon>
       </InputGroup>
     )
   }
