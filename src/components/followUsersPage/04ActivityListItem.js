@@ -15,7 +15,7 @@ const ActivityListItem = (props) => {
         {episodeInfo.image && <Col sm="1" className="mr-2"><img src={episodeInfo.image} height="100" alt="show card" /></Col>}
         <Col>
           <Row>
-            <h4>watched <a href={showURL}>{episodeInfo['tv_name']}</a></h4>
+            <h5>watched <a href={showURL}>{episodeInfo['tv_name']}</a></h5>
           </Row>
           <Row>
             <p>season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b></p>

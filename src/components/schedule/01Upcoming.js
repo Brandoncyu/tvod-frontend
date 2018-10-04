@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  Container,
-  Row,
-  Col,
-  ListGroup
-} from 'reactstrap'
+import { ListGroup } from 'reactstrap'
 import UpcomingListItem from './01UpcomingShows/UpcomingListItem'
 import {date_sort_asc_episode_upcoming} from '../_sortDate'
 import { connect } from 'react-redux'
@@ -15,23 +10,14 @@ const Upcoming = (props) => {
   upcomingSeries.sort(date_sort_asc_episode_upcoming)
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h1 className="text-center">Whats Upcoming?</h1>
-        </Col>
-      </Row>
-      <Row>
-        <ListGroup className="stretch">
-          {upcomingSeries.map((element, index) =>
-            <UpcomingListItem
-              key={index}
-              showInfo={element}
-              episodeInfo={element.upcoming}
-            />)}
-        </ListGroup>
-      </Row>
-    </Container>
+    <ListGroup className="stretch">
+      {upcomingSeries.map((element, index) =>
+        <UpcomingListItem
+          key={index}
+          showInfo={element}
+          episodeInfo={element.upcoming}
+        />)}
+    </ListGroup>
   )
 }
 

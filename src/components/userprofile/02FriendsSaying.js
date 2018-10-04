@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
 import {
-  Container,
-  Row,
-  Col,
   ListGroup
 } from 'reactstrap'
 import FriendsListItem from './02FriendsSaying/FriendsListItem'
@@ -29,23 +26,14 @@ class FriendsSaying extends Component {
     }
 
     return (
-      <Container>
-        <Row>
-          <Col>
-            <h1 className="text-center">What Are Your Friends Saying?</h1>
-          </Col>
-        </Row>
-        <Row>
-          <ListGroup className="stretch">
-            {friends.map((element,index) =>
-              <FriendsListItem
-                key={index}
-                userInfo={element}
-                episodeInfo={element['episode_description']}
-              />)}
-          </ListGroup>
-        </Row>
-      </Container>
+      <ListGroup className="stretch">
+        {friends.map((element,index) =>
+          <FriendsListItem
+            key={index}
+            userInfo={element}
+            episodeInfo={element['episode_description']}
+          />)}
+      </ListGroup>
     )
   }
 }
