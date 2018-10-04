@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ActivityListItem from './04ActivityListItem'
 import {
-  Container, Row, Col, ListGroup
+  ListGroup
 } from 'reactstrap';
 
 
@@ -12,23 +12,14 @@ const ActivityList = (props) =>  {
   if (props.userPage.episodesReviews) episodes = props.userPage.episodesReviews
 
   return (
-      <Container className="my-4">
-        <Row>
-          <Col>
-            <h2>Recent Activity</h2>
-          </Col>
-        </Row>
-        <Row>
-          <ListGroup className="stretch">
-            {episodes.map((element,index) => {
-              return <ActivityListItem
-                key={index}
-                episodeInfo={element}
-              />
-            })}
-          </ListGroup>
-        </Row>
-      </Container>
+    <ListGroup className="stretch">
+      {episodes.map((element,index) => {
+        return <ActivityListItem
+          key={index}
+          episodeInfo={element}
+        />
+      })}
+    </ListGroup>
   )
 }
 
