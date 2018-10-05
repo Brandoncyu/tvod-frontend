@@ -18,13 +18,13 @@ class Register extends Component {
   constructor(props){
     super(props)
     this.state = {
-      firstname: 'New',
-      lastname: 'Person',
-      email: 'newperson@gmail.com',
-      image: 'http://www.hergamut.in/wp-content/uploads/2015/12/TV-addict01.jpg',
-      username: 'newperson',
-      password: 'password',
-      aboutme: 'yadda'
+      firstname: '',
+      lastname: '',
+      email: '',
+      image: '',
+      username: '',
+      password: '',
+      aboutme: ''
     }
   }
 
