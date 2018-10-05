@@ -23,7 +23,7 @@ class Header extends Component {
     return (
       <div>
         <Navbar dark={true} color="dark"  expand="md">
-          <NavbarBrand tag={Link} to="/">T.V.O.D.</NavbarBrand>
+        <NavbarBrand tag={Link} to="/">T.V.O.D. {' '}<i className="fas fa-tv"></i></NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink tag={Link} to="/">Home</NavLink>
