@@ -65,7 +65,7 @@ class NewShowItems extends Component {
     const episodeInfo = this.props.episodeInfo
 
     return (
-      <ListGroupItem>
+      <ListGroupItem className="backGrey">
         <Row>
           <Col sm="2">
             {abstraction ? <h5>✓ Watched!</h5> : <h5><Button size="sm" color="info" onClick={this.addEpisodeAction} >+ Add To Watched!</Button></h5>}

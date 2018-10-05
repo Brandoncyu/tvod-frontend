@@ -12,7 +12,7 @@ const UpcomingListItem = (props) => {
   const airstamp = Moment(episodeInfo.airstamp).calendar()
 
   return (
-    <ListGroupItem>
+    <ListGroupItem className="backGrey">
       <Row>
         <Col sm="2">
           <img src={showInfo.image} height="200" alt="show card" />
@@ -21,7 +21,6 @@ const UpcomingListItem = (props) => {
           <h4><a href={showURL}>{showInfo['tv_name']}</a></h4>
           <h5>Season {episodeInfo.season}, Episode {episodeInfo.number}: {episodeInfo.name}</h5>
           <p>airs <b>{airstamp}</b></p>
-          <br /><br />
           <div className="summary" dangerouslySetInnerHTML={ { __html: episodeInfo.summary }}>
           </div>
         </Col>

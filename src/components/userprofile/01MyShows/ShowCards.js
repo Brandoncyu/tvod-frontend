@@ -10,7 +10,7 @@ const ShowCards = (props) => {
   const newURL = '/shows/' + showInfo['tv_name'].replace(/ /g, '+')
   const watchedPercentage = Number((showInfo['episodes_watched'] / showInfo['episode_count']) * 100)
   return (
-    <Card className="showCards mx-1" tag={Link} to={newURL}>
+    <Card className="backGrey showCards mx-1" tag={Link} to={newURL}>
       { showInfo.image !== null && <CardImg className="mb-4" top width="100%" src={showInfo.image} alt="Card image" /> }
       <CardTitle className="text-center">
         {showInfo['tv_name']}

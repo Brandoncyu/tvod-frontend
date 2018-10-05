@@ -41,7 +41,7 @@ class FollowUsers extends Component {
       <div>
         <Header />
         <Title />
-        <Container>
+        <Container className="backcolor">
             <CardColumns>
               {usersInfo.map((userInfo, index) =>
                 <UserCards
@@ -49,6 +49,7 @@ class FollowUsers extends Component {
                   userInfo={userInfo}
                 />)}
             </CardColumns>
+          <br />
         </Container>
       </div>
     )

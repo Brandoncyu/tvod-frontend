@@ -13,7 +13,7 @@ const CardRows = (props) =>  {
   }
 
   return (
-    <div className="d-flex justify-content-start card-wrapper">
+    <div className="backGrey d-flex justify-content-start card-wrapper">
       { favorite.length > 0 && favorite.map((element, index) =>{
         return <ShowCards
           key={index}

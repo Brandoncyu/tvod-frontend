@@ -10,7 +10,7 @@ const ActivityListItem = (props) => {
   const when = Moment(episodeInfo['updated_at']).calendar()
 
   return (
-    <ListGroupItem>
+    <ListGroupItem className="backGrey">
       <Row>
         {episodeInfo.image && <Col sm="1" className="mr-2 d-flex align-items-center"><img src={episodeInfo.image} height="100" alt="show card" /></Col>}
         <Col>

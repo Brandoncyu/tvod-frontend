@@ -22,7 +22,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar color="dark" light expand="md">
           <NavbarBrand tag={Link} to="/">T.V.O.D.</NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>

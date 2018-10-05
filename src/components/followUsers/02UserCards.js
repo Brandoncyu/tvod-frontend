@@ -41,7 +41,7 @@ class UserCards extends Component{
     const userLink = '/following/' + userInfo.username
 
     return (
-      <Card className="userCards" >
+      <Card className="userCards backGrey" >
         <CardBody>
           <Row>
             <Col className="d-flex flex-row">

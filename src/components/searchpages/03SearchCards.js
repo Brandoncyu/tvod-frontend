@@ -9,7 +9,7 @@ const searchCards = (props) => {
   const newURL = '/shows/' + props.cardInfo.name.replace(/ /g, '+')
 
   return (
-    <Card className="searchCards" body id={cardInfo.id}>
+    <Card className="searchCards backGrey" body id={cardInfo.id}>
       { cardInfo.image !== null &&
         <CardImg className="mb-4" top width="100%" src={cardInfo.image.medium} alt="Card image" />
       }

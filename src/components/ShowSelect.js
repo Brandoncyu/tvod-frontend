@@ -132,7 +132,7 @@ class showSelect extends Component {
 
     return (<div>
       <Header />
-      <Container>
+      <Container className="backcolor">
         <Row>
           <Col md='3'>
             { this.props.shows.showInfo.image !== null && <img className="my-4" width="100%" src={this.props.shows.showInfo.image.original} alt="Card" /> }
@@ -165,7 +165,7 @@ class showSelect extends Component {
           </Col>
         </Row>
 
-        {this.props.watchedInfo.watched === true && <div><Nav tabs>
+        {this.props.watchedInfo.watched === true && <div><Nav className="backcolor" tabs>
           {seasonSorted.map((season, index) => {
             const seasonName = `Season ${index + 1}`
             const seasonNumber = index + 1
@@ -181,7 +181,7 @@ class showSelect extends Component {
             </NavItem>)}
           )}
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent className="backcolor" activeTab={this.state.activeTab}>
         { seasonSorted.map((season, index) => {
           const seasonNumber = index + 1
           const seasonNumberToString = seasonNumber.toString()
@@ -204,7 +204,7 @@ class showSelect extends Component {
             </Row>
           </TabPane>)}
         )}
-        </TabContent>
+        </TabContent><br />
         </div>}
       </Container>
       </div>

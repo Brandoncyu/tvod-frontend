@@ -29,10 +29,14 @@ class SearchPage extends Component {
       <div>
         <Header />
         <Title />
-        <Container>
+        <Container className="backcolor">
           <Row>
             <Col>
               <SearchBar searchShows={this.searchShows} />
+            </Col>
+          </Row>
+          <Row className="backcolor stretchDown">
+            <Col>
               <CardColumns className="my-4">
                 {cards.map((cardInfo, index) => <SearchCards key={index} cardInfo={cardInfo} />)}
               </CardColumns>

@@ -11,7 +11,7 @@ const FriendsListItem = (props) => {
 
 
   return (
-    <ListGroupItem>
+    <ListGroupItem className="backGrey">
       <Row>
         <Col sm="1" className="mr-4">
           <img src={userInfo.image} className="rounded-circle" height="100" alt="user card" />{' '}

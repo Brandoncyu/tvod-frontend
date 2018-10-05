@@ -58,7 +58,6 @@ class UserProfile extends Component {
   }
 
   render(){
-    console.log(this.props.userPage)
     if (!this.props.allSeries || !this.props.userPage){
       return (<div>
         <Header />
@@ -68,7 +67,7 @@ class UserProfile extends Component {
     return (
       <div>
         <Header />
-        <Container>
+        <Container className="backcolor">
           <Row>
             <Col md="4" className="mr-4 my-4 d-flex align-items-center">
               <img width="400" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
@@ -81,9 +80,9 @@ class UserProfile extends Component {
             </Col>
           </Row>
         </Container>
-        <Container>
+        <Container className="backcolor">
         <br />
-        <Nav tabs>
+        <Nav className="backcolor" tabs>
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
@@ -125,7 +124,7 @@ class UserProfile extends Component {
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent className="backGrey" activeTab={this.state.activeTab}>
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
@@ -162,6 +161,7 @@ class UserProfile extends Component {
             </Row>
           </TabPane>
         </TabContent>
+        <br />
         </Container>
 
       </div>

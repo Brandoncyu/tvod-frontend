@@ -7,7 +7,7 @@ import {
 
 const Title = () => {
   return (
-    <Container>
+    <Container className="backcolor">
       <Row>
         <Col>
           <h1 className="my-4">Search Your Favorite Shows</h1>

@@ -9,7 +9,7 @@ const ActivityListItem = (props) => {
   const showURL = '/shows/' + episodeInfo['tv_name'].replace(/ /g, '+')
   const when = Moment(episodeInfo['updated_at']).calendar()
   return (
-    <ListGroupItem>
+    <ListGroupItem className="backGrey">
       <Row>
         {episodeInfo.image && <Col sm="1" className="mr-2 d-flex align-items-center"><img src={episodeInfo.image} height="50" alt="show card" /></Col>}
         <Col>

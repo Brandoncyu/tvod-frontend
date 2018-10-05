@@ -75,11 +75,10 @@ class Episode extends Component {
   episodeInfoSpread = this.props.episodeInfoRender.find(element => element['ep_id'] === this.props.episodeInfo.id)
 
   render(){
-
     const airdate = moment(this.props.episodeInfo.airdate).format('MMMM Do YYYY')
     const abstraction = this.checkId || this.state.selected === true || this.props.checkedAll || this.props.checkedAllSeries
     return (
-      <ListGroupItem>
+      <ListGroupItem className="backcolor">
         {abstraction ?
           <h5>✓{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5> :
           <h5>

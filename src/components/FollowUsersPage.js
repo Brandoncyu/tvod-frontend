@@ -76,7 +76,7 @@ class FollowUsersPage extends Component {
     return (
       <div>
         <Header />
-        <Container>
+        <Container className="backcolor">
           <Row>
             <Col md="3" className="mr-4">
               <img width="300" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
@@ -100,9 +100,9 @@ class FollowUsersPage extends Component {
               </p>
             </Col>
           </Row>
+          <br />
         </Container>
-        <br />
-        <Container>
+        <Container className="backcolor">
           <Nav tabs>
             <NavItem>
               <NavLink
@@ -152,6 +152,7 @@ class FollowUsersPage extends Component {
               </Row>
             </TabPane>
           </TabContent>
+          <br />
         </Container>
 
 
