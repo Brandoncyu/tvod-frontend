@@ -12,21 +12,21 @@ const ActivityListItem = (props) => {
   return (
     <ListGroupItem>
       <Row>
-        {episodeInfo.image && <Col sm="1" className="mr-2 d-flex align-items-center"><img src={episodeInfo.image} height="100" alt="show card" /></Col>}
+        {episodeInfo.image && <Col sm="1" className="mr-2 d-flex align-items-center"><img src={episodeInfo.image} height="50" alt="show card" /></Col>}
         <Col>
           <Row>
-            <h5>watched <a href={showURL}>{episodeInfo['tv_name']}</a></h5>
+            <small>watched <a href={showURL}>{episodeInfo['tv_name']}</a></small>
           </Row>
           <Row>
-            <p>season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b></p>
+            <small>season {episodeInfo['season_no']} episode {episodeInfo['ep_no']}: <b>{episodeInfo['ep_name']}</b></small>
           </Row>
           {episodeInfo.rating &&
           <Row>
-            <p>Rated {episodeInfo.rating} out of 5</p>
+            <small>Rated {episodeInfo.rating} out of 5</small>
           </Row>}
           {episodeInfo.comments &&
           <Row>
-            <p>Comments: "{episodeInfo.comments}"</p>
+            <small>Comments: "{episodeInfo.comments}"</small>
           </Row>}
           <Row>
             <small>{when}</small>

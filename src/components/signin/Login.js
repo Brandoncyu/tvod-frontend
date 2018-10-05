@@ -30,6 +30,7 @@ class Login extends Component {
 
     await this.props.userLogin({username, password})
     if (!this.props.showLoginError) this.props.history.push('/')
+    localStorage.setItem('username', username)
   }
 
   render () {

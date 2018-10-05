@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import ActivityList from './userprofile/00ActivityList/01ActivityList'
 import MyShowsFavorites from './userprofile/00MyShowsFavorites'
 import MyShowsNonFavorites from './userprofile/01MyShowsNonFavorites'
 import FriendsSaying from './userprofile/02FriendsSaying'
@@ -9,6 +10,7 @@ import {
   Nav, NavItem, NavLink, TabPane, TabContent, Container, Row, Col
 } from 'reactstrap';
 import { getAllSeries, clearAllSeries } from '../actions/userAllSeries'
+import { getUserData, clearUserData } from '../actions/followUsersPage'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import classnames from 'classnames';
@@ -27,16 +29,24 @@ class UserProfile extends Component {
 
   componentDidMount(){
     this.addSeriesInfo()
+    this.findUser()
     window.scrollTo(0, 0)
   }
 
   componentWillUnmount(){
     this.props.clearAllSeries()
+    this.props.clearUserData()
   }
 
   addSeriesInfo = async() => {
     const userId = Number(localStorage.getItem('id'))
     await this.props.getAllSeries(userId)
+  }
+
+  findUser = async () => {
+    const userName = localStorage.getItem('username')
+    const id = localStorage.getItem('id')
+    await this.props.getUserData(userName, id)
   }
 
   toggle(tab) {
@@ -48,7 +58,8 @@ class UserProfile extends Component {
   }
 
   render(){
-    if (this.props.allSeries === false){
+    console.log(this.props.userPage)
+    if (!this.props.allSeries || !this.props.userPage){
       return (<div>
         <Header />
         <ReactSpinner />
@@ -58,6 +69,20 @@ class UserProfile extends Component {
       <div>
         <Header />
         <Container>
+          <Row>
+            <Col md="4" className="mr-4 my-4 d-flex align-items-center">
+              <img height="400" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
+            </Col>
+            <Col className="ml-4">
+              <br />
+              <h1>Welcome Back, {this.props.userPage.firstname}!</h1>
+              <p>Your Recent Activity:</p>
+              <ActivityList />
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+        <br />
         <Nav tabs>
           <NavItem>
             <NavLink
@@ -146,12 +171,15 @@ class UserProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    allSeries: state.allSeries.allSeries
+    allSeries: state.allSeries.allSeries,
+    userPage: state.userPage.userData
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
+    getUserData: bindActionCreators(getUserData, dispatch),
+    clearUserData: bindActionCreators(clearUserData, dispatch),
     getAllSeries: bindActionCreators(getAllSeries, dispatch),
     clearAllSeries: bindActionCreators(clearAllSeries, dispatch)
   }
