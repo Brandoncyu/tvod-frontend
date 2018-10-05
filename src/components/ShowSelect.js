@@ -140,18 +140,18 @@ class showSelect extends Component {
           <Col>
             <h1 className="mt-4">{this.props.shows.showInfo.name}</h1>
             { this.props.watchedInfo.watched === false ?
-              <Button onClick={this.addWatched} color="link">
+              <Button onClick={this.addWatched} color="link" className="text-white">
                 + Add to My Shows
               </Button> :
-              <Button onClick={this.deleteWatched} color="link">
+              <Button onClick={this.deleteWatched} color="link" className="text-white">
                 - Remove From My Shows
               </Button> }
             { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === false) &&
-              <Button onClick={this.changeFavorite} color="link">
+              <Button onClick={this.changeFavorite} color="link" className="text-white">
                 ☆ Add to My Favorite Shows
               </Button> }
             { (this.props.watchedInfo.watched === true && this.props.watchedInfo.favorite === true) &&
-              <Button onClick={this.changeFavorite} color="link">
+              <Button onClick={this.changeFavorite} color="link" className="text-white">
                 ★ Remove from My Favorite Shows
               </Button> }
             <p className="summary" dangerouslySetInnerHTML={ { __html: this.props.shows.showInfo.summary }}></p>
