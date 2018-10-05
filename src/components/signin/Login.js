@@ -34,41 +34,45 @@ class Login extends Component {
 
   render () {
     return (
-      <Container>
+      <Container fluid={true}>
         <Row>
-          <Col xs="3"></Col>
-          <Col>
-            <Form onSubmit={this.onSubmit} id="login">
-              <h3>Login to T.V.O.D.</h3>
-              <FormGroup>
-                <Label htmlFor="login-username">Username</Label>
-                 <Input
-                  type="text"
-                  name="login-username"
-                  id="login-username"
-                  placeholder="Enter Your Username"
-                  value={this.state.username}
-                  onChange={e => this.setState({username: e.target.value})} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="login-password">Password</Label>
-                 <Input
-                  type="password"
-                  name="login-password"
-                  id="login-password"
-                  placeholder="Enter Your Password"
-                  value={this.state.password}
-                  onChange={e => this.setState({password: e.target.value})} />
-                <a href="./register">I am not yet registered, sign me up to T.V.O.D.</a>
-              </FormGroup>
-              <Button color="primary">Login!</Button>
-            </Form>
-            <br />
-            { this.props.showLoginError &&
-              <p className="font-weight-bold text-danger">Username and Password Combination Not Found. Please Try Again.</p>
-               }
+          <Col md="3">
+            <h1 id ="title">T.V.O.D.</h1>
           </Col>
-          <Col xs="3"></Col>
+          <Col>
+            <div className="form-spacing">
+              <Form onSubmit={this.onSubmit} className="p-4" id="signin-form">
+                <h3>Login to T.V.O.D.</h3>
+                <FormGroup>
+                  <Label htmlFor="login-username">Username</Label>
+                   <Input
+                    type="text"
+                    name="login-username"
+                    id="login-username"
+                    placeholder="Enter Your Username"
+                    value={this.state.username}
+                    onChange={e => this.setState({username: e.target.value})} />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="login-password">Password</Label>
+                   <Input
+                    type="password"
+                    name="login-password"
+                    id="login-password"
+                    placeholder="Enter Your Password"
+                    value={this.state.password}
+                    onChange={e => this.setState({password: e.target.value})} />
+                  <a href="./register">I am not yet registered, sign me up to T.V.O.D.</a>
+                </FormGroup>
+                <Button color="primary">Login!</Button>
+              </Form>
+              <br />
+              { this.props.showLoginError &&
+                <p className="font-weight-bold text-danger">Username and Password Combination Not Found. Please Try Again.</p>
+                 }
+            </div>
+          </Col>
+          <Col md="3"></Col>
         </Row>
       </Container>)
   }

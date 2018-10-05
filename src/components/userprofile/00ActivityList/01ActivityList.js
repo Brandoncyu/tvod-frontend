@@ -11,16 +11,13 @@ const ActivityList = (props) =>  {
   let episodes = []
   if (props.userPage.episodesReviews.length ===0){
     return <p>No Recent Activity</p>
-  } else if (props.userPage.episodesReviews.length === 1 || props.userPage.episodesReviews.length === 2){
+  } else {
     episodes = props.userPage.episodesReviews
-  } else if (props.userPage.episodesReviews.length > 2) {
-    let episodeList = props.userPage.episodesReviews
-    episodes = [episodeList[0], episodeList[1], episodeList[2]]
   }
 
 
   return (
-    <ListGroup className="stretch">
+    <ListGroup className="stretch  scroll-vertical">
       {episodes.map((element,index) => {
         return <ActivityListItem
           key={index}

@@ -86,7 +86,7 @@ class FollowUsersPage extends Component {
               {renderButton ?
                 <h4>✓ following</h4> :
                 <div>
-                  <Button onClick={this.addToFollow} size="md" color="info" >
+                  <Button onClick={this.addToFollow} size="md" color="primary" >
                     + Follow
                   </Button>
                   <br />

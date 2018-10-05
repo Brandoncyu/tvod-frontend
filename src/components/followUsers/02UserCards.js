@@ -50,7 +50,7 @@ class UserCards extends Component{
               </CardTitle>
             </Col>
             <Col className="d-flex flex-row-reverse">
-              {renderButton ? <p>✓ following</p> : <h5><Button onClick={this.addToFollow} size="sm" color="info" >+ follow</Button></h5>}
+              {renderButton ? <p>✓ following</p> : <h5><Button onClick={this.addToFollow} size="sm" color="primary" >+ follow</Button></h5>}
             </Col>
           </Row>
           <br />
