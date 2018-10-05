@@ -1,5 +1,5 @@
 import axios from 'axios'
-const TV_URL = 'http://api.tvmaze.com'
+const TV_URL = 'https://api.tvmaze.com'
 
 export const searchAll = async (title) => {
   const response = await axios.get(`${TV_URL}/search/shows?q=${title}`)
