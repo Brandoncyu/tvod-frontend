@@ -30,6 +30,10 @@ class Login extends Component {
 
     await this.props.userLogin({username, password})
     if (!this.props.showLoginError) this.props.history.push('/')
+    this.setState ({
+      username: '',
+      password: ''
+    })
   }
 
   render () {
@@ -65,11 +69,12 @@ class Login extends Component {
                   <a href="./register">I am not yet registered, sign me up to T.V.O.D.</a>
                 </FormGroup>
                 <Button color="primary">Login!</Button>
+                { this.props.showLoginError &&
+                  <h4 className="font-weight-bold p-3 text-danger">Username and Password Combination Not Found. Please Try Again.</h4>
+                   }
               </Form>
               <br />
-              { this.props.showLoginError &&
-                <p className="font-weight-bold text-danger">Username and Password Combination Not Found. Please Try Again.</p>
-                 }
+
             </div>
           </Col>
           <Col md="3"></Col>

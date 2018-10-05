@@ -38,9 +38,15 @@ class Register extends Component {
     await this.props.registerUser({ firstname, lastname, email, image, username, password, aboutme, values })
 
     if (!this.props.showSignupError) this.props.history.push('/')
+    this.setState({
+      email: '',
+      username: '',
+    })
   }
 
+
   render () {
+
     return (
       <Container fluid={true}>
         <Row>
@@ -160,14 +166,16 @@ class Register extends Component {
                   </Container>
                 </FormGroup>
                 <Container className="my-1">
+                { this.props.showSignupError &&
+                  <h4 className="font-weight-bold text-danger">Error with Registration. Please Try Again.</h4>
+                   }
                   <a href="./login">Back to Login</a><br/><br/>
                   <Button color="primary">Register!</Button>
                 </Container>
+
               </Form>
               <br />
-              { this.props.showSignupError &&
-                <p className="font-weight-bold text-danger">Username or Email Already Taken. Please Try Again.</p>
-                 }
+
             </div>
           </Col>
           <Col md="2"></Col>

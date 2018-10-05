@@ -13,6 +13,7 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 export const userLogin = ({username, password}, history) =>{
   return async (dispatch) => {
     try {
+      if (username.length === 0 || password.length === 0) throw new Error ('Login Failed')
       dispatch({type: USER_LOGIN_PENDING})
       let response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/login`,{
         method: "POST",
@@ -40,12 +41,15 @@ export const userLogin = ({username, password}, history) =>{
 export const registerUser = ({ firstname, lastname, email, image, username, password, aboutme, values }) =>{
   return async (dispatch) => {
     try {
+      if (firstname.length === 0 || lastname.length === 0 || email.length === 0 || image.length === 0 || username.length === 0 || password.length === 0 ) throw new Error ('Login Failed')
+
       dispatch({type: USER_SIGNUP_PENDING})
       let response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/signup`,{
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ firstname, lastname, email, image, username, password, aboutme, values })
       })
+      console.log(response)
       if (response.status !== 201) throw new Error ('Login Failed')
       let userObject = await response.json()
       localStorage.setItem('token', userObject.token)
