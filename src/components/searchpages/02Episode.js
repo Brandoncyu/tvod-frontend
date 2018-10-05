@@ -75,6 +75,7 @@ class Episode extends Component {
   episodeInfoSpread = this.props.episodeInfoRender.find(element => element['ep_id'] === this.props.episodeInfo.id)
 
   render(){
+
     const airdate = moment(this.props.episodeInfo.airdate).format('MMMM Do YYYY')
     const abstraction = this.checkId || this.state.selected === true || this.props.checkedAll || this.props.checkedAllSeries
     return (
@@ -82,7 +83,7 @@ class Episode extends Component {
         {abstraction ?
           <h5>✓{' '}Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}</h5> :
           <h5>
-            <Button size="sm" color="info" onClick={this.addEpisodeAction} >+</Button>{' '}
+            <Button size="sm" color="primary" onClick={this.addEpisodeAction} >+</Button>{' '}
             Episode {this.props.episodeInfo.number}: {this.props.episodeInfo.name}
           </h5>}
       <small>
@@ -93,11 +94,11 @@ class Episode extends Component {
       { abstraction && <div>
         <Label htmlFor="rating">Episode rating</Label> {' '}
           <ButtonGroup size ="sm" id="rating">
-            <Button color="info" onClick={() => this.addRatingAction(1)} active={this.state.rating === 1}>1</Button>
-            <Button color="info" onClick={() => this.addRatingAction(2)} active={this.state.rating === 2}>2</Button>
-            <Button color="info" onClick={() => this.addRatingAction(3)} active={this.state.rating === 3}>3</Button>
-            <Button color="info" onClick={() => this.addRatingAction(4)} active={this.state.rating === 4}>4</Button>
-            <Button color="info" onClick={() => this.addRatingAction(5)} active={this.state.rating === 5}>5</Button>
+            <Button color="primary" onClick={() => this.addRatingAction(1)} active={this.state.rating === 1}>1</Button>
+            <Button color="primary" onClick={() => this.addRatingAction(2)} active={this.state.rating === 2}>2</Button>
+            <Button color="primary" onClick={() => this.addRatingAction(3)} active={this.state.rating === 3}>3</Button>
+            <Button color="primary" onClick={() => this.addRatingAction(4)} active={this.state.rating === 4}>4</Button>
+            <Button color="primary" onClick={() => this.addRatingAction(5)} active={this.state.rating === 5}>5</Button>
           </ButtonGroup>
         <br />
         <Label htmlFor="comment">Comments</Label>
@@ -108,7 +109,7 @@ class Episode extends Component {
             value={this.state.comments}
             onChange={e => this.setState({comments: e.target.value})}
           />
-        <Button color="info" onClick={this.addCommentAction} size="sm">Submit Comment</Button></div>
+        <Button color="primary" onClick={this.addCommentAction} size="sm">Submit Comment</Button></div>
       }
       </ListGroupItem>
     )

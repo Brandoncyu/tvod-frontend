@@ -1,5 +1,5 @@
 import {
-  GET_WATCHED, ADD_WATCHED, DELETE_WATCHED, CHANGE_FAVORITE
+  GET_WATCHED, ADD_WATCHED, DELETE_WATCHED, CHANGE_FAVORITE, CLEAR_WATCHED
 } from '../actions/userSeriesWatched'
 
 let initialState = {
@@ -12,6 +12,8 @@ let initialState = {
 export default(state = initialState, action) => {
   switch (action.type) {
     case GET_WATCHED:
+      return {userWatched: action.payload}
+    case CLEAR_WATCHED:
       return {userWatched: action.payload}
     case ADD_WATCHED:
       return {userWatched: action.payload}

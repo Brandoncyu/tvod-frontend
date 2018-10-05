@@ -4,6 +4,7 @@ export const ADD_EPISODE = 'ADD_EPISODE'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const ADD_RATING = 'ADD_RATING'
 export const ADD_MULTIPLE_EPISODES = 'ADD_MULTIPLE_EPISODES'
+export const CLEAR_WATCHED = 'CLEAR_WATCHED'
 
 export const getAllEpisodes = (userid, tvId) =>{
   return async (dispatch) => {
@@ -78,6 +79,17 @@ export const addRating = (userId, tvId, epId, rating) =>{
     dispatch({
       type: ADD_RATING,
       payload: epInfo
+    })
+  }
+}
+
+
+export const clearEpisodes = () => {
+  return (dispatch) =>{
+    let response = []
+    dispatch({
+      type: CLEAR_WATCHED,
+      payload: response
     })
   }
 }

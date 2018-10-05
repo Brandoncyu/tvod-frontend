@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from './Header'
 import Title from './followUsers/01Title'
 import UserCards from './followUsers/02UserCards'
-import { getAllUsers } from '../actions/followUsers'
+import { getAllUsers, clearAllUsers } from '../actions/followUsers'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { shuffle } from './_shuffle'
@@ -15,6 +15,10 @@ class FollowUsers extends Component {
   componentDidMount() {
     this.getUsers()
     window.scrollTo(0, 0)
+  }
+
+  componentWillUnmount(){
+    this.props.clearAllUsers()
   }
 
   getUsers = async () =>{
@@ -32,7 +36,7 @@ class FollowUsers extends Component {
             <CardColumns>
               {usersInfo.map((userInfo, index) =>
                 <UserCards
-                  key={index} 
+                  key={index}
                   userInfo={userInfo}
                 />)}
             </CardColumns>
@@ -50,7 +54,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
   return{
-    getAllUsers: bindActionCreators(getAllUsers, dispatch)
+    getAllUsers: bindActionCreators(getAllUsers, dispatch),
+    clearAllUsers: bindActionCreators(clearAllUsers, dispatch)
   }
 }
 

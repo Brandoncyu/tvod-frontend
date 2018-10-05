@@ -1,5 +1,6 @@
 import {checkSeries, addWatched, deleteWatched, changeFavorite} from '../models/userSeriesWatched'
 export const GET_WATCHED = 'GET_WATCHED'
+export const CLEAR_WATCHED = 'CLEAR_WATCHED'
 export const ADD_WATCHED = 'ADD_WATCHED'
 export const DELETE_WATCHED = 'DELETE_WATCHED'
 export const CHANGE_FAVORITE = 'CHANGE_FAVORITE'
@@ -14,6 +15,20 @@ export const checkIfWatched = (userid, tvId) => {
 
     dispatch({
       type: GET_WATCHED,
+      payload: response
+    })
+  }
+}
+
+export const clearIfWatched = () => {
+  return (dispatch) => {
+    let response = {
+      watched: false,
+      favorite: false,
+    }
+
+    dispatch({
+      type: CLEAR_WATCHED,
       payload: response
     })
   }

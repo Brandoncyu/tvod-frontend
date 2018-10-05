@@ -20,7 +20,7 @@ const UpcomingListItem = (props) => {
         <Col>
           <h4><a href={showURL}>{showInfo['tv_name']}</a></h4>
           <h5>Season {episodeInfo.season}, Episode {episodeInfo.number}: {episodeInfo.name}</h5>
-          <medium>airs <b>{airstamp}</b></medium>
+          <p>airs <b>{airstamp}</b></p>
           <br /><br />
           <div className="summary" dangerouslySetInnerHTML={ { __html: episodeInfo.summary }}>
           </div>

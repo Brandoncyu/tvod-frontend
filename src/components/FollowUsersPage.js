@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { addFollow } from '../models/followUsers'
-import { getUserData } from '../actions/followUsersPage'
+import { getUserData, clearUserData } from '../actions/followUsersPage'
 import CardRows from './followUsersPage/00CardRowsFavorites'
 import CardRowsFavorites from './followUsersPage/01CardRowsNonFavorites'
 import ActivityList from './followUsersPage/03ActivityList'
@@ -33,6 +33,10 @@ class FollowUsersPage extends Component {
       this.props.history.push('/following')
     }
     window.scrollTo(0, 0)
+  }
+
+  componentWillUnmount(){
+    this.props.clearUserData()
   }
 
   addToFollow = async () =>{
@@ -160,7 +164,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
   return{
-    getUserData: bindActionCreators(getUserData, dispatch)
+    getUserData: bindActionCreators(getUserData, dispatch),
+    clearUserData: bindActionCreators(clearUserData, dispatch)
   }
 }
 

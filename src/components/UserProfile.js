@@ -8,7 +8,7 @@ import Newest from './userprofile/04Newest'
 import {
   Nav, NavItem, NavLink, TabPane, TabContent, Container, Row, Col
 } from 'reactstrap';
-import { getAllSeries } from '../actions/userAllSeries'
+import { getAllSeries, clearAllSeries } from '../actions/userAllSeries'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import classnames from 'classnames';
@@ -26,6 +26,10 @@ class UserProfile extends Component {
   componentDidMount(){
     this.addSeriesInfo()
     window.scrollTo(0, 0)
+  }
+
+  componentWillUnmount(){
+    this.props.clearAllSeries()
   }
 
   addSeriesInfo = async() => {
@@ -134,7 +138,8 @@ class UserProfile extends Component {
 
 function mapDispatchToProps(dispatch){
   return {
-    getAllSeries: bindActionCreators(getAllSeries, dispatch)
+    getAllSeries: bindActionCreators(getAllSeries, dispatch),
+    clearAllSeries: bindActionCreators(clearAllSeries, dispatch)
   }
 }
 

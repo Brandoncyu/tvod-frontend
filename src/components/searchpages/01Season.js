@@ -45,16 +45,15 @@ class Season extends Component {
     })
   }
 
-
   render(){
     return (
       <div>
-        <Button onClick={this.checkedAllEpisodes} color="info" size="sm">
-          + Watched All
-        </Button>
+        {this.props.episodeInfoState.episodeIds && this.props.episodeInfoState.episodeInfo && <Button onClick={this.checkedAllEpisodes} color="primary" size="sm">
+          + I have watched the whole season
+        </Button>}
         <br />
         <ListGroup>
-          { this.props.season.map((episodeInfo, index) => {
+          { this.props.episodeInfoState.episodeIds && this.props.episodeInfoState.episodeInfo && this.props.season.map((episodeInfo, index) => {
             return <Episode
               key={index}
               showId={this.props.showId}
@@ -74,6 +73,7 @@ class Season extends Component {
 
 function mapStateToProps(state) {
   return {
+    episodeInfoState: state.episodeInfo.episodesWatched,
     watched: state.episodeInfo.episodesWatched.episodeIds
   }
 }

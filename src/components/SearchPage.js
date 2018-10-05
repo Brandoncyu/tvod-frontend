@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import {
-  Container, Row, Col, Button
+  Container, Row, Col, Button, Nav, NavItem, NavLink, TabPane, TabContent
 } from 'reactstrap'
 import Header from './Header'
 import Season from './searchpages/01Season'
-import Accordion from './accordion/Accordion';
-import { searchShowsWithEpisodes, getTvId } from '../actions/searchPage'
-import { checkIfWatched, addWatchedShow, changeFavoriteShow, deleteWatchedShow } from '../actions/userSeriesWatched'
-import { getAllEpisodes, addEpisode, addMultipleEpisodes } from '../actions/userEpisodesWatched'
+import { searchShowsWithEpisodes, clearShowsWithEpisodes, getTvId } from '../actions/searchPage'
+import { checkIfWatched, addWatchedShow, changeFavoriteShow, deleteWatchedShow, clearIfWatched } from '../actions/userSeriesWatched'
+import { getAllEpisodes, addEpisode, addMultipleEpisodes, clearEpisodes } from '../actions/userEpisodesWatched'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import classnames from 'classnames';
 
 
 class searchPage extends Component {
   constructor(props){
     super(props)
 
+    this.toggle = this.toggle.bind(this);
     this.state = {
-      checkedAllSeries: false
+      checkedAllSeries: false,
+      activeTab: '1'
     }
   }
 
@@ -26,6 +28,19 @@ class searchPage extends Component {
     window.scrollTo(0, 0)
   }
 
+  componentWillUnmount(){
+    this.props.clearShowsWithEpisodes()
+    this.props.clearIfWatched()
+    this.props.clearEpisodes()
+  }
+
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
 
   getShowandUserInfo = async () => {
     const userid = Number(localStorage.getItem('id'))
@@ -148,33 +163,48 @@ class searchPage extends Component {
               </Button>}
           </Col>
         </Row>
-        <Row>
-          {this.props.watchedInfo.watched === true &&
-            <div className="stretch">
-              <h3>Which Episodes have you seen?</h3>
-              <Accordion>
-                {seasonSorted.map((season, index) => {
-                  const seasonName = `Season ${index + 1}`
-                  return <div className="seasonLabels"
-                  label={seasonName}
-                  key={index}>
-                    <Season
-                      key={index}
-                      addEpisodeToDatabase={this.addEpisodeToDatabase}
-                      showId={this.props.shows.showInfo.id}
-                      name={this.props.shows.showInfo.name}
-                      image={this.props.shows.showInfo.image.medium}
-                      watchedShowIds={this.state.watchedShowIds}
-                      addToWatchedIds={this.addToWatchedIds}
-                      checkedAllSeries={this.state.checkedAllSeries}
-                      season={season}
-                      seasonNumber={index+1}
-                    />
-                  </div>}
-                )}
-              </Accordion>
-          </div>}
-        </Row>
+
+        {this.props.watchedInfo.watched === true && <div><Nav tabs>
+          {seasonSorted.map((season, index) => {
+            const seasonName = `Season ${index + 1}`
+            const seasonNumber = index + 1
+            const seasonNumberToString = seasonNumber.toString()
+
+            return (<NavItem key={index}>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === seasonNumberToString })}
+                onClick={() => { this.toggle(seasonNumberToString); }}
+              >
+                {seasonName}
+              </NavLink>
+            </NavItem>)}
+          )}
+        </Nav>
+        <TabContent activeTab={this.state.activeTab}>
+        { seasonSorted.map((season, index) => {
+          const seasonNumber = index + 1
+          const seasonNumberToString = seasonNumber.toString()
+
+          return (<TabPane key={index} tabId={`${seasonNumberToString}`}>
+            <Row>
+              <Col sm="12">
+                <Season
+                  addEpisodeToDatabase={this.addEpisodeToDatabase}
+                  showId={this.props.shows.showInfo.id}
+                  name={this.props.shows.showInfo.name}
+                  image={this.props.shows.showInfo.image.medium}
+                  watchedShowIds={this.state.watchedShowIds}
+                  addToWatchedIds={this.addToWatchedIds}
+                  checkedAllSeries={this.state.checkedAllSeries}
+                  season={season}
+                  seasonNumber={index+1}
+                />
+              </Col>
+            </Row>
+          </TabPane>)}
+        )}
+        </TabContent>
+        </div>}
       </Container>
       </div>
     )
@@ -199,7 +229,10 @@ function mapDispatchToProps(dispatch){
     changeFavoriteShow: bindActionCreators(changeFavoriteShow, dispatch),
     getAllEpisodes: bindActionCreators(getAllEpisodes, dispatch),
     addEpisode: bindActionCreators(addEpisode, dispatch),
-    addMultipleEpisodes: bindActionCreators(addMultipleEpisodes, dispatch)
+    addMultipleEpisodes: bindActionCreators(addMultipleEpisodes, dispatch),
+    clearEpisodes: bindActionCreators(clearEpisodes, dispatch),
+    clearIfWatched: bindActionCreators(clearIfWatched, dispatch),
+    clearShowsWithEpisodes: bindActionCreators(clearShowsWithEpisodes, dispatch)
   }
 }
 
