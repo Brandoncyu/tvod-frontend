@@ -29,10 +29,10 @@ class App extends Component {
           return <UserProfile />
         }} />
         <AuthenticateRoute exact path="/shows" render={()=>{
-          return <ShowSelect />
+          return <SearchPage />
         }} />
         <AuthenticateRoute path="/shows/:name" render={(props)=>{
-          return <SearchPage {...props} />
+          return <ShowSelect {...props} />
         }} />
         <AuthenticateRoute exact path="/following" render={()=>{
           return <FollowUsers />

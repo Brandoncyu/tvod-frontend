@@ -1,16 +1,16 @@
 import {
-  GET_RESULTS_AND_EPISODES, CLEAR_RESULTS_AND_EPISODES
+  GET_RESULTS, CLEAR_SEARCH
 } from '../actions/searchPage'
 
 let initialState = {
-  shows: {},
+  shows: [],
 };
 
 export default(state = initialState, action) => {
   switch (action.type) {
-    case GET_RESULTS_AND_EPISODES:
-      return {shows: action.payload}
-    case CLEAR_RESULTS_AND_EPISODES:
+    case CLEAR_SEARCH:
+      return {shows: []}
+    case GET_RESULTS:
       return {shows: action.payload}
     default:
       return state;

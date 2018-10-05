@@ -1,36 +1,21 @@
-import { searchOneWithEpisodes} from '../models/showSelect'
-export const GET_RESULTS_AND_EPISODES = 'GET_RESULTS_AND_EPISODES'
-export const CLEAR_RESULTS_AND_EPISODES = 'CLEAR_RESULTS_AND_EPISODES'
+import {searchAll} from '../models/showSelect'
+export const GET_RESULTS = 'GET_RESULTS'
+export const CLEAR_SEARCH = 'CLEAR_SEARCH'
 
-export const searchShowsWithEpisodes = (title, userid) =>{
+export const searchAllShows = (title) => {
   return async (dispatch) => {
-    let response = await searchOneWithEpisodes(title)
-    const today = new Date(Date.now())
-
-    let showObjectWithEpisodes = {
-      showInfo: response,
-      episodes: response._embedded.episodes,
-      airedEpisodes: response._embedded.episodes.filter(episode => today > new Date(episode.airdate))
-    }
+    let showObject = await searchAll(title)
     dispatch({
-      type: GET_RESULTS_AND_EPISODES,
-      payload: showObjectWithEpisodes
+      type: GET_RESULTS,
+      payload: showObject
     })
-
   }
 }
 
-export const clearShowsWithEpisodes = () =>{
-  return (dispatch) => {
-    let response = {}
+export const clearSearch = () =>{
+  return async (dispatch) =>{
     dispatch({
-      type: CLEAR_RESULTS_AND_EPISODES,
-      payload: response
+      type: CLEAR_SEARCH
     })
   }
-
-}
-export const getTvId = async (title) =>{
-  const response = await searchOneWithEpisodes(title)
-  return response.id
 }

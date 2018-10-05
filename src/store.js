@@ -2,8 +2,8 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import authReducer from './reducers/auth.reducers'
-import searchReducer from './reducers/showSelect'
-import showReducer from './reducers/searchPage'
+import searchReducer from './reducers/searchPage'
+import showReducer from './reducers/showSelect'
 import watchedReducer from './reducers/userSeriesWatched'
 import episodeReducer from './reducers/userEpisodesWatched'
 import allSeriesReducer from './reducers/userAllSeries'
