@@ -14,7 +14,7 @@ export const getAllUsers = (userid) => {
 
 export const clearAllUsers = () =>{
   return async (dispatch) =>{
-    let allUsers = []
+    let allUsers = false
     dispatch({
       type: CLEAR_ALL_USERS,
       payload: allUsers

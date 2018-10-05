@@ -3,7 +3,7 @@ import {
 } from '../actions/userAllSeries'
 
 let initialState = {
-  allSeries: []
+  allSeries: false
 };
 
 export default(state = initialState, action) => {

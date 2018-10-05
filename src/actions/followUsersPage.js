@@ -14,7 +14,7 @@ export const getUserData = (username, userid) =>{
 
 export const clearUserData = () =>{
   return (dispatch) => {
-    let userData = {}
+    let userData = false
     dispatch({
       type: CLEAR_USER_DATA,
       payload: userData

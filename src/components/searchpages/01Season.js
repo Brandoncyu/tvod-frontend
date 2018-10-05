@@ -7,6 +7,8 @@ import {
 import { connect } from 'react-redux'
 import { addEpisode, addMultipleEpisodes } from '../../actions/userEpisodesWatched'
 import { bindActionCreators } from 'redux'
+import {ReactSpinner} from 'react-spinning-wheel';
+import 'react-spinning-wheel/dist/style.css';
 
 class Season extends Component {
   constructor(props){
@@ -46,6 +48,9 @@ class Season extends Component {
   }
 
   render(){
+    if (!this.props.episodeInfoState.episodeIds && !this.props.episodeInfoState.episodeInfo){
+      return <div><ReactSpinner /></div>
+    }
     return (
       <div>
         {this.props.episodeInfoState.episodeIds && this.props.episodeInfoState.episodeInfo && <Button onClick={this.checkedAllEpisodes} color="primary" size="sm">

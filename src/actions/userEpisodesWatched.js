@@ -86,7 +86,7 @@ export const addRating = (userId, tvId, epId, rating) =>{
 
 export const clearEpisodes = () => {
   return (dispatch) =>{
-    let response = []
+    let response = false
     dispatch({
       type: CLEAR_WATCHED,
       payload: response

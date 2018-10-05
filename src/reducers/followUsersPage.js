@@ -3,7 +3,7 @@ import {
 } from '../actions/followUsersPage'
 
 let initialState = {
-  userData: {},
+  userData: false,
 };
 
 export default(state = initialState, action) => {

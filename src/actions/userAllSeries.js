@@ -14,7 +14,7 @@ export const getAllSeries = (userid) => {
 
 export const clearAllSeries = () => {
   return (dispatch) => {
-    let showObject = []
+    let showObject = false
     dispatch({
       type: GET_ALL_SERIES,
       payload: showObject

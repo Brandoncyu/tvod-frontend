@@ -9,6 +9,8 @@ import { shuffle } from './_shuffle'
 import {
   CardColumns, Container
 } from 'reactstrap'
+import {ReactSpinner} from 'react-spinning-wheel';
+import 'react-spinning-wheel/dist/style.css';
 
 
 class FollowUsers extends Component {
@@ -27,6 +29,13 @@ class FollowUsers extends Component {
   }
 
   render(){
+    if (!this.props.users){
+      return(<div>
+        <Header />
+        <Title />
+        <ReactSpinner />
+      </div>)
+    }
     const usersInfo = shuffle(this.props.users)
     return (
       <div>

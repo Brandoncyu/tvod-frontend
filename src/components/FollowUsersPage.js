@@ -12,7 +12,8 @@ import {
   Container, Row, Col, Button, TabContent, TabPane, Nav, NavItem, NavLink
 } from 'reactstrap';
 import classnames from 'classnames';
-
+import {ReactSpinner} from 'react-spinning-wheel';
+import 'react-spinning-wheel/dist/style.css';
 
 
 class FollowUsersPage extends Component {
@@ -65,9 +66,13 @@ class FollowUsersPage extends Component {
   render(){
     const userInfo = this.props.userPage
     let renderButton = false
-    if (userInfo){
+    if (!userInfo){
+      return <div><Header />
+      <ReactSpinner /></div>
+    } else{
       renderButton = userInfo.following || this.state.following
     }
+
     return (
       <div>
         <Header />

@@ -10,7 +10,8 @@ import { getAllEpisodes, addEpisode, addMultipleEpisodes, clearEpisodes } from '
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import classnames from 'classnames';
-
+import {ReactSpinner} from 'react-spinning-wheel';
+import 'react-spinning-wheel/dist/style.css';
 
 class searchPage extends Component {
   constructor(props){
@@ -117,7 +118,7 @@ class searchPage extends Component {
 
   render(){
     if (!this.props.shows.showInfo){
-      return <div>Pending</div>
+      return <div><Header /><ReactSpinner /></div>
     }
 
     const seasonSorted = this.props.shows.airedEpisodes.reduce((sorted, episode)=> {

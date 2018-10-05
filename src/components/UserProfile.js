@@ -12,6 +12,8 @@ import { getAllSeries, clearAllSeries } from '../actions/userAllSeries'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import classnames from 'classnames';
+import {ReactSpinner} from 'react-spinning-wheel';
+import 'react-spinning-wheel/dist/style.css';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -46,6 +48,12 @@ class UserProfile extends Component {
   }
 
   render(){
+    if (this.props.allSeries === false){
+      return (<div>
+        <Header />
+        <ReactSpinner />
+        </div>)
+    }
     return (
       <div>
         <Header />
@@ -136,6 +144,12 @@ class UserProfile extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    allSeries: state.allSeries.allSeries
+  }
+}
+
 function mapDispatchToProps(dispatch){
   return {
     getAllSeries: bindActionCreators(getAllSeries, dispatch),
@@ -143,4 +157,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(null, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
