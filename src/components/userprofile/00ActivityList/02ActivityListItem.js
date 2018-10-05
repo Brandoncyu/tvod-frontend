@@ -8,7 +8,6 @@ const ActivityListItem = (props) => {
   const episodeInfo = props.episodeInfo
   const showURL = '/shows/' + episodeInfo['tv_name'].replace(/ /g, '+')
   const when = Moment(episodeInfo['updated_at']).calendar()
-
   return (
     <ListGroupItem>
       <Row>

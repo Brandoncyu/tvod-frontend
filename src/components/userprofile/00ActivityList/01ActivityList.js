@@ -9,10 +9,15 @@ import {
 
 const ActivityList = (props) =>  {
   let episodes = []
-  if (props.userPage.episodesReviews) {
+  if (props.userPage.episodesReviews.length ===0){
+    return <p>No Recent Activity</p>
+  } else if (props.userPage.episodesReviews.length === 1 || props.userPage.episodesReviews.length === 2){
+    episodes = props.userPage.episodesReviews
+  } else if (props.userPage.episodesReviews.length > 2) {
     let episodeList = props.userPage.episodesReviews
     episodes = [episodeList[0], episodeList[1], episodeList[2]]
   }
+
 
   return (
     <ListGroup className="stretch">

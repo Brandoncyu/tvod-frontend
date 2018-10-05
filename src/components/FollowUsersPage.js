@@ -79,7 +79,7 @@ class FollowUsersPage extends Component {
         <Container>
           <Row>
             <Col md="3" className="mr-4">
-              <img height="300" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
+              <img width="300" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
             </Col>
             <Col className="ml-4">
               <h1>{this.props.userPage.username}</h1>

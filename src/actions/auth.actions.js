@@ -23,6 +23,7 @@ export const userLogin = ({username, password}, history) =>{
       let userObject = await response.json()
       localStorage.setItem('token', userObject.token)
       localStorage.setItem('id', userObject.id)
+      localStorage.setItem('username', username)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: userObject
@@ -49,6 +50,7 @@ export const registerUser = ({ firstname, lastname, email, image, username, pass
       let userObject = await response.json()
       localStorage.setItem('token', userObject.token)
       localStorage.setItem('id', userObject.id)
+      localStorage.setItem('username', username)
       dispatch({
         type: USER_SIGNUP_SUCCESS,
         payload: userObject

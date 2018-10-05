@@ -71,7 +71,7 @@ class UserProfile extends Component {
         <Container>
           <Row>
             <Col md="4" className="mr-4 my-4 d-flex align-items-center">
-              <img height="400" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
+              <img width="400" className="rounded-circle" src={this.props.userPage.image} alt="user card" />
             </Col>
             <Col className="ml-4">
               <br />
