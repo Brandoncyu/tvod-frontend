@@ -104,7 +104,7 @@ class FollowUsersPage extends Component {
         </Container>
         <Container className="backcolor">
           <Nav tabs>
-            <NavItem>
+            <NavItem className="linkProp">
               <NavLink
                 className={classnames({ active: this.state.activeTab === '1' })}
                 onClick={() => { this.toggle('1'); }}
@@ -112,7 +112,7 @@ class FollowUsersPage extends Component {
                 Favorite Shows
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem  className="linkProp">
               <NavLink
                 className={classnames({ active: this.state.activeTab === '2' })}
                 onClick={() => { this.toggle('2'); }}
@@ -120,7 +120,7 @@ class FollowUsersPage extends Component {
                 Other Shows
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem  className="linkProp">
               <NavLink
                 className={classnames({ active: this.state.activeTab === '3' })}
                 onClick={() => { this.toggle('3'); }}

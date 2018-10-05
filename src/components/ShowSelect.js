@@ -171,7 +171,7 @@ class showSelect extends Component {
             const seasonNumber = index + 1
             const seasonNumberToString = seasonNumber.toString()
 
-            return (<NavItem key={index}>
+            return (<NavItem key={index} className="linkProp">
               <NavLink
                 className={classnames({ active: this.state.activeTab === seasonNumberToString })}
                 onClick={() => { this.toggle(seasonNumberToString); }}
@@ -181,7 +181,7 @@ class showSelect extends Component {
             </NavItem>)}
           )}
         </Nav>
-        <TabContent className="backcolor" activeTab={this.state.activeTab}>
+        <TabContent className="backGrey" activeTab={this.state.activeTab}>
         { seasonSorted.map((season, index) => {
           const seasonNumber = index + 1
           const seasonNumberToString = seasonNumber.toString()

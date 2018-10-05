@@ -73,6 +73,6 @@
   height: 100%;
 }
 
-NavItem {
-  color: blue
+.linkProp:hover {
+  color: grey
 }

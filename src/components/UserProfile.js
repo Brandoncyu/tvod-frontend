@@ -85,13 +85,14 @@ class UserProfile extends Component {
         <Nav className="backcolor" tabs>
           <NavItem>
             <NavLink
+
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
               Favorite Shows
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="linkProp">
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
@@ -99,7 +100,7 @@ class UserProfile extends Component {
               Other Shows
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="linkProp">
             <NavLink
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggle('3'); }}
@@ -107,7 +108,7 @@ class UserProfile extends Component {
               Just Aired
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="linkProp">
             <NavLink
               className={classnames({ active: this.state.activeTab === '4' })}
               onClick={() => { this.toggle('4'); }}
@@ -115,7 +116,7 @@ class UserProfile extends Component {
               Airing This Week
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="linkProp">
             <NavLink
               className={classnames({ active: this.state.activeTab === '5' })}
               onClick={() => { this.toggle('5'); }}
