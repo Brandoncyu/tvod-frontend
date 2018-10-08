@@ -2,7 +2,7 @@
 
 ![screenshot](/splash-image.png)
 
-Presentation Link(http://slides.com/brandonyu/tvod/)
+[Presentation Link](http://slides.com/brandonyu/tvod/)
 
 T.V.O.D. is a web platform for users to track what television programs they are watching during this era of "Peak TV." Users can mark what shows they consider their favorites, leave comments and ratings for each episode, and receive a schedule of all episodes upcoming and recently aired. They also have the ability to follow other users and receive updates on what their friends are currently watching.
 
