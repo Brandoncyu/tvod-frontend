@@ -74,7 +74,6 @@ class Login extends Component {
                    }
               </Form>
               <br />
-
             </div>
           </Col>
           <Col md="3"></Col>
