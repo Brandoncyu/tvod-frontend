@@ -1,4 +1,4 @@
-![screenshot](/splash-image.png)
+![screenshot](./photos/splash-image.png)
 
 [Presentation Link](http://slides.com/brandonyu/tvod/)
 
@@ -44,17 +44,21 @@ This project has been deployed on Heroku at the address: https://tvod.herokuapp.
 
 ### Home Page of your recent activity, your shows (favorite and non-favorite), your recent scheduled episodes (recently aired and upcoming), and what your friends are saying.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nNmGuej-mcs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Home Page](./photos/home-page.png)](https://www.youtube.com/watch?v=nNmGuej-mcs)
+
+[Video Link](https://www.youtube.com/watch?v=nNmGuej-mcs&feature=youtu.be)
 
 ### Dynamic Search Show page, adding shows and episodes, and leaving ratings and comments.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cNN4FfJSw8c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Search Shows](./photos/search-shows.png)](https://www.youtube.com/watch?v=cNN4FfJSw8c)
 
 [Video Link](https://www.youtube.com/watch?v=cNN4FfJSw8c&feature=youtu.be)
 
-### Finding friends, viewing other user profiles, and following.
+### Finding friends, viewing other user profiles, and following
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Bg4rRwLwX0c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Find Friends](./photos/find-friends.png)](https://www.youtube.com/watch?v=cNN4FfJSw8c)
+
+[Video Link](https://www.youtube.com/watch?v=cNN4FfJSw8c&feature=youtu.be)
 
 ## Built With
 
