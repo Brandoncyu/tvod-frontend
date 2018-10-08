@@ -36,9 +36,9 @@ Start the react development server:
 * npm start
 ```
 
-<!-- ## Deployment
+## Deployment
 
-This project has been deployed on Heroku at the address: https://tvod.herokuapp.com -->
+This project has been deployed on Heroku at the address: https://tvod.herokuapp.com
 
 ## Built With
 
