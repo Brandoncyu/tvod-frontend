@@ -1,5 +1,3 @@
-# T.V.O.D.
-
 ![screenshot](/splash-image.png)
 
 [Presentation Link](http://slides.com/brandonyu/tvod/)
