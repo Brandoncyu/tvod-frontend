@@ -44,15 +44,17 @@ This project has been deployed on Heroku at the address: https://tvod.herokuapp.
 
 ### Home Page of your recent activity, your shows (favorite and non-favorite), your recent scheduled episodes (recently aired and upcoming), and what your friends are saying.
 
-[Video Link](https://www.youtube.com/watch?v=nNmGuej-mcs&feature=youtu.be)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nNmGuej-mcs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Dynamic Search Show page, adding shows and episodes, and leaving ratings and comments.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cNN4FfJSw8c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 [Video Link](https://www.youtube.com/watch?v=cNN4FfJSw8c&feature=youtu.be)
 
 ### Finding friends, viewing other user profiles, and following.
 
-[Video Link](https://www.youtube.com/watch?v=Bg4rRwLwX0c&feature=youtu.be)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Bg4rRwLwX0c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Built With
 
