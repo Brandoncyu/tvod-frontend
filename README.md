@@ -4,7 +4,7 @@
 
 T.V.O.D. is a web platform for users to track what television programs they are watching during this era of "Peak TV." Users can mark what shows they consider their favorites, leave comments and ratings for each episode, and receive a schedule of all episodes upcoming and recently aired. They also have the ability to follow other users and receive updates on what their friends are currently watching.
 
-This app make primary use of the [TVMaze](http://www.tvmaze.com/api), an in-depth API that shows information about TV listings.
+This app make primary use of [TVMaze](http://www.tvmaze.com/api), an API that provides comprehensive information regarding TV listings.
 
 ## Getting Started
 
@@ -39,6 +39,20 @@ Start the react development server:
 ## Deployment
 
 This project has been deployed on Heroku at the address: https://tvod.herokuapp.com
+
+## Key Features
+
+### Home Page of your recent activity, your shows (favorite and non-favorite), your recent scheduled episodes (recently aired and upcoming), and what your friends are saying.
+
+[Video Link](https://www.youtube.com/watch?v=nNmGuej-mcs&feature=youtu.be)
+
+### Dynamic Search Show page, adding shows and episodes, and leaving ratings and comments.
+
+[Video Link](https://www.youtube.com/watch?v=cNN4FfJSw8c&feature=youtu.be)
+
+### Finding friends, viewing other user profiles, and following.
+
+[Video Link](https://www.youtube.com/watch?v=Bg4rRwLwX0c&feature=youtu.be)
 
 ## Built With
 
