@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 const ShowCards = (props) => {
   const showInfo = props.showInfo
-  console.log(showInfo)
   const newURL = '/shows/' + showInfo['tv_name'].replace(/ /g, '+')
   const watchedPercentage = Number((showInfo['episodes_watched'] / showInfo['episode_count']) * 100)
   return (
