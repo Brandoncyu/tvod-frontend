@@ -47,6 +47,7 @@ class UserProfile extends Component {
     const userName = localStorage.getItem('username')
     const id = localStorage.getItem('id')
     await this.props.getUserData(userName, id)
+    // await this.dispatch(getUserData(userName, id))
   }
 
   toggle(tab) {
@@ -179,6 +180,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
   return {
+    // dispatch
     getUserData: bindActionCreators(getUserData, dispatch),
     clearUserData: bindActionCreators(clearUserData, dispatch),
     getAllSeries: bindActionCreators(getAllSeries, dispatch),

@@ -167,7 +167,7 @@ class Register extends Component {
                 </FormGroup>
                 <Container className="my-1">
                 { this.props.showSignupError &&
-                  <h4 className="font-weight-bold text-danger">Error with Registration. Please Try Again.</h4>
+                  <h4 className="font-weight-bold text-danger">Error with Registration. Please Fill In All Forms.</h4>
                    }
                   <a href="./login">Back to Login</a><br/><br/>
                   <Button color="primary">Register!</Button>
