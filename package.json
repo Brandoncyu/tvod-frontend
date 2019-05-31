@@ -24,7 +24,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "react-scripts build && echo tvod.herokuapp.com > build/CNAME && surge build"
+    "eject": "react-scripts eject"
   }
 }
